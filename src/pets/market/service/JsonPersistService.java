@@ -1,7 +1,9 @@
 package pets.market.service;
 
-public interface JsonPersistService<T> {
-    Boolean writeToFile(T t, String fileName);
+import pets.market.dto.DomainWrapperDTO;
 
-   T readFromFile(String fileName);
+public interface JsonPersistService<T> {
+    Boolean writeToFile(DomainWrapperDTO<T> t, String fileName);
+
+    DomainWrapperDTO<T> readFromFile(String fileName);
 }
