@@ -4,9 +4,9 @@
  */
 package pets.market;
 
+
 /**
- *
- * @author aaj
+ * @author aaj, dmmb, vvm
  */
 public class PetsMarketApplication {
 
@@ -16,5 +16,6 @@ public class PetsMarketApplication {
     public static void main(String[] args) {
         // TODO code application logic here
     }
-    
+
+
 }
