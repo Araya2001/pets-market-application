@@ -5,6 +5,9 @@
 package pets.market;
 
 
+import pets.market.service.JOptionPaneWrapper;
+import pets.market.service.JOptionPaneWrapperImpl;
+
 /**
  * @author aaj, dmmb, vvm
  */
@@ -15,6 +18,12 @@ public class PetsMarketApplication {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+
+        JOptionPaneWrapper jOptionPaneWrapper = new JOptionPaneWrapperImpl();
+
+        jOptionPaneWrapper.doRequestInputData("Por favor ingrese su identificador de usuario:");
+        jOptionPaneWrapper.doShowOutputData("Bienvenido");
+
     }
 
 
