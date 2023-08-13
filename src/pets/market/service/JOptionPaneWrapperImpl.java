@@ -27,4 +27,4 @@ public class JOptionPaneWrapperImpl implements JOptionPaneWrapper {
     public Boolean doRequestYesNoMenu(String message) {
         return Objects.equals(JOptionPane.showConfirmDialog(null, message, TITLE, JOptionPane.YES_NO_OPTION), JOptionPane.YES_OPTION);
     }
-}
+}//aqui mi comentario diaana
