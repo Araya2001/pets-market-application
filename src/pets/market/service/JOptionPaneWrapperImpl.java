@@ -27,4 +27,18 @@ public class JOptionPaneWrapperImpl implements JOptionPaneWrapper {
     public Boolean doRequestYesNoMenu(String message) {
         return Objects.equals(JOptionPane.showConfirmDialog(null, message, TITLE, JOptionPane.YES_NO_OPTION), JOptionPane.YES_OPTION);
     }
+
+    @Override
+    public Integer doShowInputMenu(String body,String title,String[]botones,int index) {
+      return   
+        JOptionPane.showOptionDialog(
+                null,
+                body,
+                title,
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,botones,botones[index]);
+        
+    }
+    
 }

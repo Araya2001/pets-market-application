@@ -11,4 +11,6 @@ public interface JOptionPaneWrapper {
 
     Boolean doRequestYesNoMenu(String message);
 
+    Integer doShowInputMenu(String body,String title,String[]botones,int index);   
+    
 }
