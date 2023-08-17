@@ -11,16 +11,16 @@ package pets.market.menu;
 
 import javax.swing.*;
 
-public class SalerMenu {
+public class SellerMenu {
 
-    public String SalerS;
+    public String SellerS;
 
 
-    public void salerMenu() {
+    public void sellerMenu() {
 
         String[] botones = {"Ventas", "Control de Citas", "Salir"};
 
-        int Saler = JOptionPane.showOptionDialog(
+        int Seller = JOptionPane.showOptionDialog(
                 null,
                 "Seleccione su Opcion: ",
                 "Menu de Vendedor",
@@ -28,19 +28,19 @@ public class SalerMenu {
                 JOptionPane.QUESTION_MESSAGE,
                 null, botones, botones[0]);
 
-        switch (Saler) {
+        switch (Seller) {
             case 0:
-                SalerS = botones[0];
+                SellerS = botones[0];
 //  SalesMenu.salesMenu();
                 break;
 
             case 1:
-                SalerS = botones[1];
+                SellerS = botones[1];
 //  AppointmentMenu.appointmentMenu();
                 break;
 
             case 2:
-                SalerS = botones[2];
+                SellerS = botones[2];
                 JOptionPane.showMessageDialog(null, "Saliendo...");
                 System.exit(0);
                 break;
