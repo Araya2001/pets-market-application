@@ -2,8 +2,8 @@ package pets.market.domain;
 
 import java.util.HashMap;
 
-public class Sale {
-    private Long id;
+public class Sale extends BaseEntity<Long> {
+
     private Object saleByUser;
     private Object customer;
     private HashMap<String, Integer> inventoryItems;
@@ -11,14 +11,6 @@ public class Sale {
     private Double subTotalChargeValue;
     private Double totalChargeValue;
 
-    public Long getId() {
-        return id;
-    }
-
-    public Sale setId(Long id) {
-        this.id = id;
-        return this;
-    }
 
     public Object getSaleByUser() {
         return saleByUser;

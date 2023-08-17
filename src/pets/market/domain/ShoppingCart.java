@@ -2,19 +2,10 @@ package pets.market.domain;
 
 import java.util.HashMap;
 
-public class ShoppingCart {
-    private Long id;
+public class ShoppingCart extends BaseEntity<Long> {
+
     private Object customer;
     private HashMap<String, Integer> inventoryItems;
-
-    public Long getId() {
-        return id;
-    }
-
-    public ShoppingCart setId(Long id) {
-        this.id = id;
-        return this;
-    }
 
     public Object getCustomer() {
         return customer;

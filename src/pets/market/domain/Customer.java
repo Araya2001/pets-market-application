@@ -5,18 +5,16 @@
 package pets.market.domain;
 
 
-public class Customer {
-    
+public class Customer extends BaseEntity<String> {
+
     public String fullName;
     public String email;
-    private String id;
-    
-    
+
+
     // Constructor
     public Customer(String fullName, String email, String id) {
         this.fullName = fullName;
         this.email = email;
-        this.id = id;
     }
 
     // Método "get" para fullName
@@ -39,15 +37,6 @@ public class Customer {
         this.email = email;
     }
 
-    // Método "get" para id
-    public String getId() {
-        return id;
-    }
-
-    // Método "set" para id
-    public void setId(String id) {
-        this.id = id;
-    }
 }
   
     

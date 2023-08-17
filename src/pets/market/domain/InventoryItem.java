@@ -1,25 +1,15 @@
 package pets.market.domain;
 
 /**
- *
  * @author Valeria
  */
-public class InventoryItem {
-    private Long id;
+public class InventoryItem extends BaseEntity<Long> {
+
     private Object petType;
     private String name;
     private Double priceValue;
     private Integer quantity;
     private Object itemType;
-
-    public Long getId() {
-        return id;
-    }
-
-    public InventoryItem setId(Long id) {
-        this.id = id;
-        return this;
-    }
 
     public Object getPetType() {
         return petType;
