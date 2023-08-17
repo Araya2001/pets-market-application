@@ -15,6 +15,7 @@ public class SalerMenu {
 
     public String SalerS;
 
+
     public void salerMenu() {
 
         String[] botones = {"Ventas", "Control de Citas", "Salir"};
