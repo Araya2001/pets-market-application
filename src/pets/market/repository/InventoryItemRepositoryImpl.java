@@ -1,6 +1,6 @@
 package pets.market.repository;
 
-import pets.market.domain.Sale;
+import pets.market.domain.InventoryItem;
 import pets.market.service.JsonPersistService;
 
 import java.util.List;
@@ -9,54 +9,54 @@ import java.util.function.Predicate;
 
 public class InventoryItemRepositoryImpl implements InventoryItemRepository {
 
-    private final JsonPersistService<Sale> saleJsonPersistService;
+    private final JsonPersistService<InventoryItem> inventoryItemJsonPersistService;
 
-    public InventoryItemRepositoryImpl(JsonPersistService<Sale> saleJsonPersistService) {
-        this.saleJsonPersistService = saleJsonPersistService;
+    public InventoryItemRepositoryImpl(JsonPersistService<InventoryItem> inventoryItemJsonPersistService) {
+        this.inventoryItemJsonPersistService = inventoryItemJsonPersistService;
     }
 
     @Override
-    public Optional<Sale> findById(Long id) {
+    public Optional<InventoryItem> findById(Long id) {
         return Optional.empty();
     }
 
     @Override
-    public List<Sale> findAll() {
+    public List<InventoryItem> findAll() {
         return null;
     }
 
     @Override
-    public List<Sale> findByPredicate(Predicate<Sale> salePredicate) {
+    public List<InventoryItem> findByPredicate(Predicate<InventoryItem> salePredicate) {
         return null;
     }
 
     @Override
-    public List<Sale> saveAll(List<Sale> list) {
+    public List<InventoryItem> saveAll(List<InventoryItem> list) {
         return null;
     }
 
     @Override
-    public List<Sale> updateAll(List<Sale> list) {
+    public List<InventoryItem> updateAll(List<InventoryItem> list) {
         return null;
     }
 
     @Override
-    public Sale save(Sale sale) {
+    public InventoryItem save(InventoryItem sale) {
         return null;
     }
 
     @Override
-    public Sale update(Sale sale) {
+    public InventoryItem update(InventoryItem sale) {
         return null;
     }
 
     @Override
-    public Boolean delete(Sale sale) {
+    public Boolean delete(InventoryItem sale) {
         return null;
     }
 
     @Override
-    public Boolean deleteAll(List<Sale> list) {
+    public Boolean deleteAll(List<InventoryItem> list) {
         return null;
     }
 }

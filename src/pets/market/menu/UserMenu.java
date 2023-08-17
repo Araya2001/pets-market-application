@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package pets.market.domain;
+package pets.market.menu;
 
 import javax.swing.JOptionPane;
 import pets.market.service.JOptionPaneWrapper;
