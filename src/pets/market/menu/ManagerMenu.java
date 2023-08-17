@@ -16,7 +16,6 @@ public class ManagerMenu {
     public String ManagerS;
 
 
-
     public void managerMenu() {
 
         String[] botones = {"Control de Usuarios", "Inventario", "Ventas", "Control de Citas", "Salir"};

@@ -5,41 +5,40 @@
 
 package pets.market.menu;
 
-import javax.swing.JOptionPane;
 import pets.market.service.JOptionPaneWrapper;
 import pets.market.service.JOptionPaneWrapperImpl;
 
-public class UserMenu{
-    
-public String UserS;   
-    
-public void userMenu(){       
-    
-String [] botones = {"Gerente","Vendedor","Salir"};      
+import javax.swing.*;
 
-    JOptionPaneWrapper menu = new JOptionPaneWrapperImpl();
+public class UserMenu {
 
-int user = menu.doShowInputMenu("Seleccione su roll: ", "Menu de Usuario", botones, 0);
+    public String UserS;
 
-switch(user)
-    
-{
-    case 0:       
-      UserS = botones[0];
-//  ManagerMenu.managerMenu();    
-      break;
+    public void userMenu() {
 
-    case 1:        
-      UserS = botones[1];
+        String[] botones = {"Gerente", "Vendedor", "Salir"};
+
+        JOptionPaneWrapper menu = new JOptionPaneWrapperImpl();
+
+        int user = menu.doShowInputMenu("Seleccione su roll: ", "Menu de Usuario", botones, 0);
+
+        switch (user) {
+            case 0:
+                UserS = botones[0];
+                //  ManagerMenu.managerMenu();
+                break;
+
+            case 1:
+                UserS = botones[1];
 //  SalerMenu.salerMenu();    
-      break;
-      
-    case 2:         
-      UserS = botones[2];
-      JOptionPane.showMessageDialog(null, "Saliendo...");
-      System.exit(0);      
-      break;      
-      
-}
-}
+                break;
+
+            case 2:
+                UserS = botones[2];
+                JOptionPane.showMessageDialog(null, "Saliendo...");
+                System.exit(0);
+                break;
+
+        }
+    }
 }

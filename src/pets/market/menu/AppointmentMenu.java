@@ -5,9 +5,8 @@
 package pets.market.menu;
 
 /**
- *
  * @author Valeria
  */
 public class AppointmentMenu {
-    
+
 }

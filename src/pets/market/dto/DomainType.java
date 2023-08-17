@@ -10,35 +10,32 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public enum DomainType {
-    SALE_ENTITY("Sale", "Domain Class for Sale Entity", Sale.class),
-    INVENTORY_ITEM_ENTITY("Inventory Item", "Domain Class for Inventory Item Entity", InventoryItem.class),
-    SHOPPING_CART_ENTITY("Shopping Cart", "Domain Class for Shopping Cart Entity", ShoppingCart.class);
+  SALE_ENTITY("Sale", "Domain Class for Sale Entity", Sale.class),
+  INVENTORY_ITEM_ENTITY("Inventory Item", "Domain Class for Inventory Item Entity", InventoryItem.class),
+  SHOPPING_CART_ENTITY("Shopping Cart", "Domain Class for Shopping Cart Entity", ShoppingCart.class);
+  private final String name;
+  private final String description;
+  private final Class<?> aClass;
 
-    private final String name;
-    private final String description;
+  DomainType(String name, String description, Class<?> aClass) {
+    this.name = name;
+    this.description = description;
+    this.aClass = aClass;
+  }
 
-    private final Class<?> aClass;
+  public static List<DomainType> findByPredicate(Predicate<DomainType> domainTypePredicate) {
+    return Arrays.stream(DomainType.values()).filter(domainTypePredicate).collect(Collectors.toList());
+  }
 
-    DomainType(String name, String description, Class<?> aClass) {
-        this.name = name;
-        this.description = description;
-        this.aClass = aClass;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public String getDescription() {
+    return description;
+  }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public Class<?> getaClass() {
-        return aClass;
-    }
-
-    public static List<DomainType> findByPredicate(Predicate<DomainType> domainTypePredicate) {
-        return Arrays.stream(DomainType.values()).filter(domainTypePredicate).collect(Collectors.toList());
-    }
-
+  public Class<?> getaClass() {
+    return aClass;
+  }
 }

@@ -29,16 +29,16 @@ public class JOptionPaneWrapperImpl implements JOptionPaneWrapper {
     }
 
     @Override
-    public Integer doShowInputMenu(String body,String title,String[]botones,int index) {
-      return   
-        JOptionPane.showOptionDialog(
-                null,
-                body,
-                title,
-                JOptionPane.DEFAULT_OPTION,
-                JOptionPane.QUESTION_MESSAGE,
-                null,botones,botones[index]);
-        
+    public Integer doShowInputMenu(String body, String title, String[] botones, int index) {
+        return
+                JOptionPane.showOptionDialog(
+                        null,
+                        body,
+                        title,
+                        JOptionPane.DEFAULT_OPTION,
+                        JOptionPane.QUESTION_MESSAGE,
+                        null, botones, botones[index]);
+
     }
-    
+
 }

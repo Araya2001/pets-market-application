@@ -5,12 +5,9 @@
 package pets.market.dto;
 
 /**
- *
  * @author diana
  */
 public enum RoleType {
-    
-    SELLER,
-    MANAGER;
-    
+  SELLER,
+  MANAGER
 }
