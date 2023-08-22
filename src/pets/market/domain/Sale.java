@@ -4,10 +4,10 @@ import java.util.HashMap;
 import java.util.Objects;
 
 public class Sale extends BaseEntity<Long> {
-  private Object saleByUser;
-  private Object customer;
+  private String saleByUser;
+  private String customer;
   private HashMap<String, Integer> inventoryItems;
-  private Object taxType;
+  private String taxType;
   private Double subTotalChargeValue;
   private Double totalChargeValue;
 
@@ -15,16 +15,16 @@ public class Sale extends BaseEntity<Long> {
     return saleByUser;
   }
 
-  public Sale setSaleByUser(Object saleByUser) {
+  public Sale setSaleByUser(String saleByUser) {
     this.saleByUser = saleByUser;
     return this;
   }
 
-  public Object getCustomer() {
+  public String getCustomer() {
     return customer;
   }
 
-  public Sale setCustomer(Object customer) {
+  public Sale setCustomer(String customer) {
     this.customer = customer;
     return this;
   }
@@ -38,11 +38,11 @@ public class Sale extends BaseEntity<Long> {
     return this;
   }
 
-  public Object getTaxType() {
+  public String getTaxType() {
     return taxType;
   }
 
-  public Sale setTaxType(Object taxType) {
+  public Sale setTaxType(String taxType) {
     this.taxType = taxType;
     return this;
   }
@@ -67,10 +67,12 @@ public class Sale extends BaseEntity<Long> {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o)
+    if (this == o) {
       return true;
-    if (o == null || getClass() != o.getClass())
+    }
+    if (o == null || getClass() != o.getClass()) {
       return false;
+    }
     Sale sale = (Sale) o;
     return Objects.equals(saleByUser, sale.saleByUser) && Objects.equals(customer, sale.customer) && Objects.equals(inventoryItems, sale.inventoryItems) && Objects.equals(taxType, sale.taxType) && Objects.equals(subTotalChargeValue, sale.subTotalChargeValue) && Objects.equals(totalChargeValue, sale.totalChargeValue);
   }
@@ -82,14 +84,13 @@ public class Sale extends BaseEntity<Long> {
 
   @Override
   public String toString() {
-    final StringBuffer sb = new StringBuffer("Sale{");
-    sb.append("saleByUser=").append(saleByUser);
-    sb.append(", customer=").append(customer);
-    sb.append(", inventoryItems=").append(inventoryItems);
-    sb.append(", taxType=").append(taxType);
-    sb.append(", subTotalChargeValue=").append(subTotalChargeValue);
-    sb.append(", totalChargeValue=").append(totalChargeValue);
-    sb.append('}');
-    return sb.toString();
+    String sb = "Sale{" + "saleByUser=" + saleByUser +
+        ", customer=" + customer +
+        ", inventoryItems=" + inventoryItems +
+        ", taxType=" + taxType +
+        ", subTotalChargeValue=" + subTotalChargeValue +
+        ", totalChargeValue=" + totalChargeValue +
+        '}';
+    return sb;
   }
 }

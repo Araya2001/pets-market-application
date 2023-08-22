@@ -38,10 +38,12 @@ public class Customer extends BaseEntity<String> {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o)
+    if (this == o) {
       return true;
-    if (o == null || getClass() != o.getClass())
+    }
+    if (o == null || getClass() != o.getClass()) {
       return false;
+    }
     Customer customer = (Customer) o;
     return Objects.equals(fullName, customer.fullName) && Objects.equals(email, customer.email);
   }
@@ -53,11 +55,10 @@ public class Customer extends BaseEntity<String> {
 
   @Override
   public String toString() {
-    final StringBuffer sb = new StringBuffer("Customer{");
-    sb.append("fullName='").append(fullName).append('\'');
-    sb.append(", email='").append(email).append('\'');
-    sb.append('}');
-    return sb.toString();
+    String sb = "Customer{" + "fullName='" + fullName + '\'' +
+        ", email='" + email + '\'' +
+        '}';
+    return sb;
   }
 }
 

@@ -4,14 +4,14 @@ import java.util.HashMap;
 import java.util.Objects;
 
 public class ShoppingCart extends BaseEntity<Long> {
-  private Object customer;
+  private String customer;
   private HashMap<String, Integer> inventoryItems;
 
-  public Object getCustomer() {
+  public String getCustomer() {
     return customer;
   }
 
-  public ShoppingCart setCustomer(Object customer) {
+  public ShoppingCart setCustomer(String customer) {
     this.customer = customer;
     return this;
   }
@@ -27,10 +27,12 @@ public class ShoppingCart extends BaseEntity<Long> {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o)
+    if (this == o) {
       return true;
-    if (o == null || getClass() != o.getClass())
+    }
+    if (o == null || getClass() != o.getClass()) {
       return false;
+    }
     ShoppingCart that = (ShoppingCart) o;
     return Objects.equals(customer, that.customer) && Objects.equals(inventoryItems, that.inventoryItems);
   }
@@ -42,10 +44,9 @@ public class ShoppingCart extends BaseEntity<Long> {
 
   @Override
   public String toString() {
-    final StringBuffer sb = new StringBuffer("ShoppingCart{");
-    sb.append("customer=").append(customer);
-    sb.append(", inventoryItems=").append(inventoryItems);
-    sb.append('}');
-    return sb.toString();
+    String sb = "ShoppingCart{" + "customer=" + customer +
+        ", inventoryItems=" + inventoryItems +
+        '}';
+    return sb;
   }
 }

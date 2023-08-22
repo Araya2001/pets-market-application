@@ -51,10 +51,9 @@ public class Appointment extends BaseEntity<Long> {
 
   @Override
   public String toString() {
-    final StringBuffer sb = new StringBuffer("Appointment{");
-    sb.append("date=").append(date);
-    sb.append(", customerId='").append(customerId).append('\'');
-    sb.append('}');
-    return sb.toString();
+    String sb = "Appointment{" + "date=" + date +
+        ", customerId='" + customerId + '\'' +
+        '}';
+    return sb;
   }
 }

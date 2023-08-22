@@ -110,9 +110,7 @@ public class GenericDomainRepository<T extends BaseEntity<S>, S> implements Base
     boolean addedWithNewArray = false;
     try {
       Object[] tempArray = new Object[(tArray.length + 10)];
-      for (int i = 0; i < tArray.length; i++) {
-        tempArray[i] = tArray[i];
-      }
+        System.arraycopy(tArray, 0, tempArray, 0, tArray.length);
       tempArray[tArray.length] = t;
       tArray = (T[]) tempArray;
       addedWithNewArray = true;

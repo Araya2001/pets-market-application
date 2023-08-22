@@ -4,7 +4,6 @@
  */
 package pets.market.menu;
 
-import pets.market.domain.Sale;
 import pets.market.domain.ShoppingCart;
 import pets.market.repository.BaseDomainRepository;
 import pets.market.service.JOptionPaneWrapper;

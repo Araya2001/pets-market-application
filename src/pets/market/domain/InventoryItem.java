@@ -6,17 +6,17 @@ import java.util.Objects;
  * @author Valeria
  */
 public class InventoryItem extends BaseEntity<String> {
-  private Object petType;
+  private String petType;
   private String name;
   private Double priceValue;
   private Integer quantity;
-  private Object itemType;
+  private String itemType;
 
-  public Object getPetType() {
+  public String getPetType() {
     return petType;
   }
 
-  public InventoryItem setPetType(Object petType) {
+  public InventoryItem setPetType(String petType) {
     this.petType = petType;
     return this;
   }
@@ -48,21 +48,23 @@ public class InventoryItem extends BaseEntity<String> {
     return this;
   }
 
-  public Object getItemType() {
+  public String getItemType() {
     return itemType;
   }
 
-  public InventoryItem setItemType(Object itemType) {
+  public InventoryItem setItemType(String itemType) {
     this.itemType = itemType;
     return this;
   }
 
   @Override
   public boolean equals(Object o) {
-    if (this == o)
+    if (this == o) {
       return true;
-    if (o == null || getClass() != o.getClass())
+    }
+    if (o == null || getClass() != o.getClass()) {
       return false;
+    }
     InventoryItem that = (InventoryItem) o;
     return Objects.equals(petType, that.petType) && Objects.equals(name, that.name) && Objects.equals(priceValue, that.priceValue) && Objects.equals(quantity, that.quantity) && Objects.equals(itemType, that.itemType);
   }
@@ -74,13 +76,12 @@ public class InventoryItem extends BaseEntity<String> {
 
   @Override
   public String toString() {
-    final StringBuffer sb = new StringBuffer("InventoryItem{");
-    sb.append("petType=").append(petType);
-    sb.append(", name='").append(name).append('\'');
-    sb.append(", priceValue=").append(priceValue);
-    sb.append(", quantity=").append(quantity);
-    sb.append(", itemType=").append(itemType);
-    sb.append('}');
-    return sb.toString();
+    String sb = "InventoryItem{" + "petType=" + petType +
+        ", name='" + name + '\'' +
+        ", priceValue=" + priceValue +
+        ", quantity=" + quantity +
+        ", itemType=" + itemType +
+        '}';
+    return sb;
   }
 }

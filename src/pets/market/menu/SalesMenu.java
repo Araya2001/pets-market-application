@@ -8,7 +8,6 @@ package pets.market.menu;
  * @author Valeria
  */
 
-import pets.market.domain.Appointment;
 import pets.market.domain.Sale;
 import pets.market.repository.BaseDomainRepository;
 import pets.market.service.JOptionPaneWrapper;

@@ -13,5 +13,4 @@ public interface BaseDomainRepository<T, S> {
   T save(T t);
 
   Boolean delete(T t);
-
 }

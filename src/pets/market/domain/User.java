@@ -36,6 +36,11 @@ public class User extends BaseEntity<String> {
     return password;
   }
 
+  public User setPassword(String password) {
+    this.password = password;
+    return this;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -53,11 +58,6 @@ public class User extends BaseEntity<String> {
     return Objects.hash(firstName, lastName, password, roleType);
   }
 
-  public User setPassword(String password) {
-    this.password = password;
-    return this;
-  }
-
   public RoleType getRoleType() {
     return roleType;
   }
@@ -69,13 +69,12 @@ public class User extends BaseEntity<String> {
 
   @Override
   public String toString() {
-    final StringBuffer sb = new StringBuffer("User{");
-    sb.append("firstName='").append(firstName).append('\'');
-    sb.append(", lastName='").append(lastName).append('\'');
-    sb.append(", password='").append(password).append('\'');
-    sb.append(", roleType=").append(roleType);
-    sb.append('}');
-    return sb.toString();
+    String sb = "User{" + "firstName='" + firstName + '\'' +
+        ", lastName='" + lastName + '\'' +
+        ", password='" + password + '\'' +
+        ", roleType=" + roleType +
+        '}';
+    return sb;
   }
 }
 
