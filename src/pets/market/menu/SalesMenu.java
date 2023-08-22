@@ -8,44 +8,42 @@ package pets.market.menu;
  * @author Valeria
  */
 
-import javax.swing.*;
+import pets.market.domain.Appointment;
+import pets.market.domain.Sale;
+import pets.market.repository.BaseDomainRepository;
+import pets.market.service.JOptionPaneWrapper;
 
 public class SalesMenu {
-  public String SalesS;
+  private final BaseDomainRepository<Sale, Long> repository;
+  private final JOptionPaneWrapper gui;
 
-  public void salesMenu() {
-    String[] botones = {"Cliente Existente", "Cliente Nuevo", "Editar Cliente", "Salir"};
-    int Sales = JOptionPane.showOptionDialog(
-        null,
-        "Seleccione su Opcion: ",
-        "Menu de Ventas",
-        JOptionPane.DEFAULT_OPTION,
-        JOptionPane.QUESTION_MESSAGE,
-        null, botones, botones[0]);
-    switch (Sales) {
-      case 0:
-        SalesS = botones[0];
-        //  find();
-        //  customer();
-        //  ShoppingCartMenu.shoppingcartMenu();
-        break;
-      case 1:
-        SalesS = botones[1];
-        //  add();
-        //  customer();
-        //  ShoppingCartMenu.shoppingcartMenu();
-        break;
-      case 2:
-        SalesS = botones[2];
-        //  modify();
-        //  customer();
-        //  ShoppingCartMenu.shoppingcartMenu();
-        break;
-      case 3:
-        SalesS = botones[3];
-        JOptionPane.showMessageDialog(null, "Saliendo...");
-        System.exit(0);
-        break;
+  public SalesMenu(BaseDomainRepository<Sale, Long> repository, JOptionPaneWrapper gui) {
+    this.repository = repository;
+    this.gui = gui;
+  }
+
+  public void showAll() {
+    StringBuffer sb = new StringBuffer();
+    try {
+      for (int i = 0; i < repository.findAll().length; i++) {
+        if (repository.findAll()[i] != null) {
+          sb.append(i + 1).append(". ").append(repository.findAll()[i]);
+        }
+      }
+      gui.doShowOutputData(sb.toString());
+    } catch (Exception e) {
+      gui.doShowErrorData(e.getMessage());
+    }
+  }
+
+  public void query() {
+    StringBuffer sb = new StringBuffer();
+    try {
+      Sale sale = repository.findAll()[Integer.parseInt(gui.doRequestInputData("Ingrese el índice mostrado por sistema:"))];
+      sb.append(sale);
+      gui.doShowOutputData(sb.toString());
+    } catch (Exception e) {
+      gui.doShowErrorData(e.getMessage());
     }
   }
 }

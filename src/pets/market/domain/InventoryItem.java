@@ -5,7 +5,7 @@ import java.util.Objects;
 /**
  * @author Valeria
  */
-public class InventoryItem extends BaseEntity<Long> {
+public class InventoryItem extends BaseEntity<String> {
   private Object petType;
   private String name;
   private Double priceValue;
