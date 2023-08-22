@@ -15,9 +15,9 @@ public enum DomainType {
   SHOPPING_CART_ENTITY("Shopping Cart", "Domain Class for Shopping Cart Entity", ShoppingCart.class);
   private final String name;
   private final String description;
-  private final Class<?> aClass;
+  private final Class<T> aClass;
 
-  DomainType(String name, String description, Class<?> aClass) {
+  DomainType(String name, String description, Class<T> aClass) {
     this.name = name;
     this.description = description;
     this.aClass = aClass;
@@ -35,7 +35,7 @@ public enum DomainType {
     return description;
   }
 
-  public Class<?> getaClass() {
+  public Class<T> getaClass() {
     return aClass;
   }
 }

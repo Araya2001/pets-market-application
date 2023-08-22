@@ -6,54 +6,79 @@ package pets.market.domain;
 
 import pets.market.dto.RoleType;
 
-public class User extends BaseEntity<Long> {
+import java.util.Objects;
 
-    public String firstName;
-    public String lastName;
-    private String password;
+public class User extends BaseEntity<String> {
+  public String firstName;
+  public String lastName;
+  private String password;
+  private RoleType roleType;
 
-    private RoleType roleType;
+  public String getFirstName() {
+    return firstName;
+  }
 
+  public User setFirstName(String firstName) {
+    this.firstName = firstName;
+    return this;
+  }
 
-    // Métodos "get" y "set" para firstName
-    public String getFirstName() {
-        return firstName;
+  public String getLastName() {
+    return lastName;
+  }
+
+  public User setLastName(String lastName) {
+    this.lastName = lastName;
+    return this;
+  }
+
+  public String getPassword() {
+    return password;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
     }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    if (o == null || getClass() != o.getClass()) {
+      return false;
     }
+    User user = (User) o;
+    return Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(password, user.password) && roleType == user.roleType;
+  }
 
-    // Métodos "get" y "set" para lastName
-    public String getLastName() {
-        return lastName;
-    }
+  @Override
+  public int hashCode() {
+    return Objects.hash(firstName, lastName, password, roleType);
+  }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+  public User setPassword(String password) {
+    this.password = password;
+    return this;
+  }
 
-    // Métodos "get" y "set" para password
-    public String getPassword() {
-        return password;
-    }
+  public RoleType getRoleType() {
+    return roleType;
+  }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+  public User setRoleType(RoleType roleType) {
+    this.roleType = roleType;
+    return this;
+  }
 
-    // Métodos "get" y "set" para role
-    public RoleType getRoleType() {
-        return roleType;
-    }
-
-    public void setRoleType(RoleType roleType) {
-        this.roleType = roleType;
-    }
-
-
+  @Override
+  public String toString() {
+    final StringBuffer sb = new StringBuffer("User{");
+    sb.append("firstName='").append(firstName).append('\'');
+    sb.append(", lastName='").append(lastName).append('\'');
+    sb.append(", password='").append(password).append('\'');
+    sb.append(", roleType=").append(roleType);
+    sb.append('}');
+    return sb.toString();
+  }
 }
 
-    
-      
+
+
 

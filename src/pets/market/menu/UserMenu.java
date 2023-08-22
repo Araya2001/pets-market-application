@@ -6,47 +6,94 @@
 package pets.market.menu;
 
 import pets.market.domain.User;
+import pets.market.dto.RoleType;
 import pets.market.repository.BaseDomainRepository;
 import pets.market.service.JOptionPaneWrapper;
-import pets.market.service.JOptionPaneWrapperImpl;
-
-import javax.swing.*;
 
 public class UserMenu {
-  // REPOSITORY BASE
-  private final BaseDomainRepository<User, Long> userLongBaseDomainRepository;
-  public String UserS;
+  private final BaseDomainRepository<User, String> repository;
+  private final JOptionPaneWrapper gui;
 
-  // OCUPA UN CONSTRUCTOR CON EL REPOSITORY
-  public UserMenu(BaseDomainRepository<User, Long> userLongBaseDomainRepository) {
-    this.userLongBaseDomainRepository = userLongBaseDomainRepository;
+  public UserMenu(BaseDomainRepository<User, String> repository, JOptionPaneWrapper gui) {
+    this.repository = repository;
+    this.gui = gui;
   }
 
-  public void userMenu() {
-    // EJEMPLOS DE REPOSITORY
-    userLongBaseDomainRepository.findByPredicate(user -> user.firstName.equals("Nombre")); // encontrar y filtrar por campo específico.
-    User[] users = userLongBaseDomainRepository.findAll().toArray(new User[0]); // pasa a arreglo
-    User userObject = userLongBaseDomainRepository.findById(1L).orElse(null); // trae por ID
+  public void createUser() {
+    User user = new User();
+    String[] typeButton = {"Administrador", "Cajero"};
+    try {
+      user.setFirstName("Ingrese el nombre del usuario:")
+          .setLastName("Ingrese el apellido del usuario")
+          .setPassword("Ingrese la contraseña que desea asignarle a este usuario")
+          .setRoleType(RoleType.findByPredicate(roleType -> roleType.getType().equals(gui.doShowInputMenu("Seleccione el tipo de usuario:", "USUARIO", typeButton, 0))).orElse(RoleType.SELLER))
+          .setId(gui.doRequestInputData("Ingrese la cédula del usuario:"));
+      if (repository.save(user) != null) {
+        gui.doShowOutputData("Usuario guardado con éxito");
+      } else {
+        gui.doShowErrorData("Usuario no pudo ser guardado!!!");
+      }
+    } catch (Exception e) {
+      gui.doShowErrorData(e.getMessage());
+    }
+  }
 
-    String[] botones = {"Gerente", "Vendedor", "Salir"};
+  public void modifyUser() {
+    String[] typeButton = {"Administrador", "Cajero"};
+    try {
+      User user = repository.findById(gui.doRequestInputData("Ingrese la cédula del usuario a modificar:")).orElse(null);
+      if (user != null) {
+        user.setFirstName("Ingrese el nombre del usuario:")
+            .setLastName("Ingrese el apellido del usuario")
+            .setPassword("Ingrese la contraseña que desea asignarle a este usuario")
+            .setRoleType(RoleType.findByPredicate(roleType -> roleType.getType().equals(gui.doShowInputMenu("Seleccione el tipo de usuario:", "USUARIO", typeButton, 0))).orElse(RoleType.SELLER))
+            .setId(gui.doRequestInputData("Ingrese la cédula del usuario:"));
+      } else {
+        gui.doShowErrorData("No se logró encontrar el usuario especificado");
+      }
+    } catch (Exception e) {
+      gui.doShowErrorData(e.getMessage());
+    }
+  }
 
-    JOptionPaneWrapper menu = new JOptionPaneWrapperImpl();
+  public void deleteUser() {
+    try {
+      User user = repository.findById(gui.doRequestInputData("Ingrese la cédula del usuario a eliminar:")).orElse(null);
+      if (user != null) {
+        if (repository.delete(user)) {
+          gui.doShowOutputData("Usuario se eliminó con éxito");
+        } else {
+          gui.doShowErrorData("Usuario no logró ser eliminado!!!");
+        }
+      } else {
+        gui.doShowErrorData("No se logró encontrar el usuario especificado");
+      }
+    } catch (Exception e) {
+      gui.doShowErrorData(e.getMessage());
+    }
+  }
 
-    int user = menu.doShowInputMenu("Seleccione su roll: ", "Menu de Usuario", botones, 0);
-    switch (user) {
-      case 0:
-        UserS = botones[0];
-        //  ManagerMenu.managerMenu();
-        break;
-      case 1:
-        UserS = botones[1];
-        //  SalerMenu.salerMenu();
-        break;
-      case 2:
-        UserS = botones[2];
-        JOptionPane.showMessageDialog(null, "Saliendo...");
-        System.exit(0);
-        break;
+  public void showAll() {
+    StringBuffer sb = new StringBuffer();
+    try {
+      for (int i = 0; i < repository.findAll().length; i++) {
+        if (repository.findAll()[i] != null) {
+          sb.append(i + 1).append(". ").append(repository.findAll()[i]);
+        }
+      }
+      gui.doShowOutputData(sb.toString());
+    } catch (Exception e) {
+      gui.doShowErrorData(e.getMessage());
+    }
+  }
+
+  public void query() {
+    StringBuffer sb = new StringBuffer();
+    try {
+      repository.findById(gui.doRequestInputData("Ingrese la cédula del usuario a consultar:")).ifPresent(sb::append);
+      gui.doShowOutputData(sb.toString());
+    } catch (Exception e) {
+      gui.doShowErrorData(e.getMessage());
     }
   }
 }

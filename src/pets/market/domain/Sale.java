@@ -1,68 +1,95 @@
 package pets.market.domain;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 public class Sale extends BaseEntity<Long> {
+  private Object saleByUser;
+  private Object customer;
+  private HashMap<String, Integer> inventoryItems;
+  private Object taxType;
+  private Double subTotalChargeValue;
+  private Double totalChargeValue;
 
-    private Object saleByUser;
-    private Object customer;
-    private HashMap<String, Integer> inventoryItems;
-    private Object taxType;
-    private Double subTotalChargeValue;
-    private Double totalChargeValue;
+  public Object getSaleByUser() {
+    return saleByUser;
+  }
 
+  public Sale setSaleByUser(Object saleByUser) {
+    this.saleByUser = saleByUser;
+    return this;
+  }
 
-    public Object getSaleByUser() {
-        return saleByUser;
-    }
+  public Object getCustomer() {
+    return customer;
+  }
 
-    public Sale setSaleByUser(Object saleByUser) {
-        this.saleByUser = saleByUser;
-        return this;
-    }
+  public Sale setCustomer(Object customer) {
+    this.customer = customer;
+    return this;
+  }
 
-    public Object getCustomer() {
-        return customer;
-    }
+  public HashMap<String, Integer> getInventoryItems() {
+    return inventoryItems;
+  }
 
-    public Sale setCustomer(Object customer) {
-        this.customer = customer;
-        return this;
-    }
+  public Sale setInventoryItems(HashMap<String, Integer> inventoryItems) {
+    this.inventoryItems = inventoryItems;
+    return this;
+  }
 
-    public HashMap<String, Integer> getInventoryItems() {
-        return inventoryItems;
-    }
+  public Object getTaxType() {
+    return taxType;
+  }
 
-    public Sale setInventoryItems(HashMap<String, Integer> inventoryItems) {
-        this.inventoryItems = inventoryItems;
-        return this;
-    }
+  public Sale setTaxType(Object taxType) {
+    this.taxType = taxType;
+    return this;
+  }
 
-    public Object getTaxType() {
-        return taxType;
-    }
+  public Double getSubTotalChargeValue() {
+    return subTotalChargeValue;
+  }
 
-    public Sale setTaxType(Object taxType) {
-        this.taxType = taxType;
-        return this;
-    }
+  public Sale setSubTotalChargeValue(Double subTotalChargeValue) {
+    this.subTotalChargeValue = subTotalChargeValue;
+    return this;
+  }
 
-    public Double getSubTotalChargeValue() {
-        return subTotalChargeValue;
-    }
+  public Double getTotalChargeValue() {
+    return totalChargeValue;
+  }
 
-    public Sale setSubTotalChargeValue(Double subTotalChargeValue) {
-        this.subTotalChargeValue = subTotalChargeValue;
-        return this;
-    }
+  public Sale setTotalChargeValue(Double totalChargeValue) {
+    this.totalChargeValue = totalChargeValue;
+    return this;
+  }
 
-    public Double getTotalChargeValue() {
-        return totalChargeValue;
-    }
+  @Override
+  public boolean equals(Object o) {
+    if (this == o)
+      return true;
+    if (o == null || getClass() != o.getClass())
+      return false;
+    Sale sale = (Sale) o;
+    return Objects.equals(saleByUser, sale.saleByUser) && Objects.equals(customer, sale.customer) && Objects.equals(inventoryItems, sale.inventoryItems) && Objects.equals(taxType, sale.taxType) && Objects.equals(subTotalChargeValue, sale.subTotalChargeValue) && Objects.equals(totalChargeValue, sale.totalChargeValue);
+  }
 
-    public Sale setTotalChargeValue(Double totalChargeValue) {
-        this.totalChargeValue = totalChargeValue;
-        return this;
-    }
+  @Override
+  public int hashCode() {
+    return Objects.hash(saleByUser, customer, inventoryItems, taxType, subTotalChargeValue, totalChargeValue);
+  }
+
+  @Override
+  public String toString() {
+    final StringBuffer sb = new StringBuffer("Sale{");
+    sb.append("saleByUser=").append(saleByUser);
+    sb.append(", customer=").append(customer);
+    sb.append(", inventoryItems=").append(inventoryItems);
+    sb.append(", taxType=").append(taxType);
+    sb.append(", subTotalChargeValue=").append(subTotalChargeValue);
+    sb.append(", totalChargeValue=").append(totalChargeValue);
+    sb.append('}');
+    return sb.toString();
+  }
 }
