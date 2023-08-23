@@ -17,10 +17,10 @@ public class AppointmentMenu {
   private final BaseDomainRepository<Customer, String> customerRepository;
   private final JOptionPaneWrapper gui;
 
-  public AppointmentMenu(BaseDomainRepository<Appointment, Long> repository, JOptionPaneWrapper gui, pets.market.repository.BaseDomainRepository<pets.market.domain.Customer,java.lang.String> customerRepository) {
+  public AppointmentMenu(BaseDomainRepository<Appointment, Long> repository, JOptionPaneWrapper gui, BaseDomainRepository<Customer, String> customerRepository) {
     this.repository = repository;
     this.gui = gui;
-      this.customerRepository = customerRepository;
+    this.customerRepository = customerRepository;
   }
 
   public void showAll() {
