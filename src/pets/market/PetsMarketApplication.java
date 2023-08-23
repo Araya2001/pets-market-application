@@ -31,8 +31,11 @@ public class PetsMarketApplication {
     InventoryMenu inventoryMenu = new InventoryMenu(inventoryRepository, gui);
     // BLOQUE USUARIO
     User root = new User().setFirstName("root").setFirstName("Admin").setLastName("Root").setRoleType(RoleType.MANAGER).setPassword("Clave1234");
+    User seller = new User().setFirstName("seller").setFirstName("demo").setLastName("user").setRoleType(RoleType.SELLER).setPassword("Clave4321");
     root.setId("1");
+    seller.setId("2");
     userRepository.save(root);
+    userRepository.save(seller);
     // BLOQUE PRODUCTOS
     InventoryItem inventoryItem1 = new InventoryItem();
     InventoryItem inventoryItem2 = new InventoryItem();
