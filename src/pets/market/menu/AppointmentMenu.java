@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Stream;
 
 /**
@@ -114,6 +115,6 @@ public class AppointmentMenu {
 
   private List<LocalDateTime> localDateTimes() {
     return Stream.iterate(0, x -> x + 1).limit(45).map(x -> LocalDateTime.now().plusDays(x).truncatedTo(ChronoUnit.DAYS))
-        .filter(localDateTime -> Arrays.stream(repository.findAll()).noneMatch(appointment -> appointment.getDate().equals(localDateTime))).toList();
+        .filter(localDateTime -> Arrays.stream(repository.findAll()).filter(Objects::nonNull).noneMatch(appointment -> appointment.getDate().equals(localDateTime))).toList();
   }
 }
