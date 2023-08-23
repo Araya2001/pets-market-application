@@ -39,7 +39,7 @@ public class ShoppingCartMenu {
       if (customerRepository.findById(customerId).isEmpty()) {
         gui.doShowErrorData("Por favor crear el cliente primero");
       } else {
-        ShoppingCart cart = Arrays.stream(repository.findByPredicate(shoppingCart -> shoppingCart.getCustomer().equals(customerId))).findFirst().orElse(null);
+        ShoppingCart cart = repository.findByPredicate(Objects::nonNull).stream().filter(shoppingCart -> Objects.requireNonNull(shoppingCart).getCustomer().equals(customerId)).findFirst().orElse(null);
         if (cart == null) {
           cart = new ShoppingCart().setCustomer(customerId).setInventoryItems(new HashMap<>());
           if (repository.save(cart) != null) {
@@ -83,7 +83,7 @@ public class ShoppingCartMenu {
       if (customerRepository.findById(customerId).isEmpty()) {
         gui.doShowErrorData("No se puede modificar un carro de compras existente si no existe el cliente.");
       } else {
-        ShoppingCart cart = Arrays.stream(repository.findByPredicate(shoppingCart -> shoppingCart.getCustomer().equals(customerId))).findFirst().orElse(null);
+        ShoppingCart cart = repository.findByPredicate(shoppingCart -> shoppingCart.getCustomer().equals(customerId)).stream().findFirst().orElse(null);
         if (cart != null) {
           if (gui.doRequestYesNoMenu("Desea eliminar los artículos que tenía el cliente previo a esta compra?")) {
             cart.setInventoryItems(new HashMap<>());
@@ -133,7 +133,7 @@ public class ShoppingCartMenu {
     StringBuffer sb = new StringBuffer();
     try {
       String filter = gui.doRequestInputData("Ingrese la cédula del cliente:");
-      ShoppingCart shoppingCart = Arrays.stream(repository.findByPredicate(shoppingCart1 -> shoppingCart1.getCustomer().equals(filter))).findFirst().orElse(null);
+      ShoppingCart shoppingCart = repository.findByPredicate(shoppingCart1 -> shoppingCart1.getCustomer().equals(filter)).stream().findFirst().orElse(null);
       if (shoppingCart != null) {
         sb.append(shoppingCart);
         gui.doShowOutputData(sb.toString());

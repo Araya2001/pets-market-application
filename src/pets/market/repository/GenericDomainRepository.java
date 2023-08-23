@@ -6,6 +6,7 @@ import pets.market.service.JOptionPaneWrapperImpl;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Predicate;
@@ -39,9 +40,9 @@ public class GenericDomainRepository<T extends BaseEntity<S>, S> implements Base
   }
 
   @Override
-  public T[] findByPredicate(Predicate<T> tPredicate) {
+  public List<T> findByPredicate(Predicate<T> tPredicate) {
     try {
-      return (T[]) Arrays.stream(tArray).filter(tPredicate).toArray();
+      return Arrays.stream(tArray).filter(tPredicate).toList();
     } catch (Exception e) {
       gui.doShowErrorData(e.getMessage());
     }

@@ -98,7 +98,7 @@ public class SalesMenu {
 
   public void createInvoice() {
     StringBuffer sb = new StringBuffer();
-    ShoppingCart shoppingCart = Arrays.stream(shoppingCartRepository.findByPredicate(shoppingCart1 -> shoppingCart1.getCustomer().equals(gui.doRequestInputData("Ingrese la cédula del cliente:")))).findFirst().orElse(null);
+    ShoppingCart shoppingCart = shoppingCartRepository.findByPredicate(Objects::nonNull).stream().filter(shoppingCart1 -> shoppingCart1.getCustomer().equals(gui.doRequestInputData("Ingrese la cédula del cliente:"))).findFirst().orElse(null);
     Customer customer;
     if (shoppingCart != null) {
       customer = customerRepository.findById(shoppingCart.getCustomer()).orElse(null);

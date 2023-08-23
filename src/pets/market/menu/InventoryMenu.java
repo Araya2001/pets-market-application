@@ -8,8 +8,6 @@ import pets.market.domain.InventoryItem;
 import pets.market.repository.BaseDomainRepository;
 import pets.market.service.JOptionPaneWrapper;
 
-import java.util.Arrays;
-
 /**
  * @author Valeria
  */
@@ -30,7 +28,7 @@ public class InventoryMenu {
           .setPetType(gui.doRequestInputData("Ingrese el animal al que aplica este producto:"))
           .setQuantity(Integer.parseInt((gui.doRequestInputData("Ingrese la cantidad de productos disponibles:"))))
           .setPriceValue(Double.parseDouble((gui.doRequestInputData("Ingrese el precio unitario del producto (0.00):"))))
-          .setId(gui.doRequestInputData("Ingrese la cédula del usuario:"));
+          .setId(gui.doRequestInputData("Ingrese el código del producto:"));
       if (repository.save(inventoryItem) != null) {
         gui.doShowOutputData("Item guardado con éxito");
       } else {
@@ -43,14 +41,14 @@ public class InventoryMenu {
 
   public void modifyItem() {
     try {
-      InventoryItem item = Arrays.stream(repository.findByPredicate(inventoryItem -> inventoryItem.getId().equals(gui.doRequestInputData("Ingrese el código del producto a consultar:")))).findFirst().orElse(null);
+      InventoryItem item = repository.findByPredicate(inventoryItem -> inventoryItem.getId().equals(gui.doRequestInputData("Ingrese el código del producto a consultar:"))).stream().findFirst().orElse(null);
       if (item != null) {
         item.setName(gui.doRequestInputData("Ingrese el nombre del producto:"))
             .setItemType(gui.doRequestInputData("Ingrese el tipo del producto:"))
             .setPetType(gui.doRequestInputData("Ingrese el animal al que aplica este producto:"))
             .setQuantity(Integer.parseInt((gui.doRequestInputData("Ingrese la cantidad de productos disponibles:"))))
             .setPriceValue(Double.parseDouble((gui.doRequestInputData("Ingrese el precio unitario del producto (0.00):"))))
-            .setId(gui.doRequestInputData("Ingrese la cédula del usuario:"));
+            .setId(gui.doRequestInputData("Ingrese el código del producto:"));
       } else {
         gui.doShowErrorData("No se logró encontrar el producto especificado");
       }
@@ -94,7 +92,7 @@ public class InventoryMenu {
     StringBuffer sb = new StringBuffer();
     try {
       String product = gui.doRequestInputData("Ingrese el código del producto a consultar:");
-      Arrays.stream(repository.findByPredicate(inventoryItem -> inventoryItem.getId().equals(product))).findFirst().ifPresent(sb::append);
+      repository.findByPredicate(inventoryItem -> inventoryItem.getId().equals(product)).stream().findFirst().ifPresent(sb::append);
       gui.doShowOutputData(sb.toString());
     } catch (Exception e) {
       gui.doShowErrorData(e.getMessage());
