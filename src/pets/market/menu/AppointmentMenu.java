@@ -11,6 +11,9 @@ import pets.market.service.JOptionPaneWrapper;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Stream;
 
 /**
@@ -36,7 +39,7 @@ public class AppointmentMenu {
       } else {
         // TODO VVM: METER INTERFAZ DE CALENDARIO
         appointment = new Appointment();
-        appointment.setDate(LocalDateTime.from(Instant.now()))
+        appointment.setDate(gui.doRequestComboBoxSelectionWithDate("Seleccione una fecha:", "RESERVA", localDateTimes()))
             .setCustomerId(customerId)
             .setId(gui.doRequestInputData("Ingresar un identificador de reserva"));
         if (repository.save(appointment) != null) {
@@ -60,7 +63,8 @@ public class AppointmentMenu {
         appointment = repository.findById(gui.doRequestInputData("Ingrese identificador de reserva:")).orElse(null);
         if (appointment != null) {
           // TODO VVM: METER INTERFAZ DE CALENDARIO
-          appointment.setDate(LocalDateTime.from(Instant.now())).setCustomerId(customerId).setId(gui.doRequestInputData("Ingresar un identificador de reserva"));
+          appointment.setDate(gui.doRequestComboBoxSelectionWithDate("Seleccione una fecha:", "RESERVA", localDateTimes()))
+              .setCustomerId(customerId).setId(gui.doRequestInputData("Ingresar un identificador de reserva"));
         } else {
           gui.doShowErrorData("No se logró actualizar la reservación!!!");
         }
@@ -108,7 +112,8 @@ public class AppointmentMenu {
     }
   }
 
-  private LocalDateTime[] localDateTimes() {
-    return (LocalDateTime[]) Stream.iterate(0, x -> x + 1).limit(30).map(x -> LocalDateTime.now().plusDays(x)).toArray();
+  private List<LocalDateTime> localDateTimes() {
+    return Stream.iterate(0, x -> x + 1).limit(45).map(x -> LocalDateTime.now().plusDays(x).truncatedTo(ChronoUnit.DAYS))
+        .filter(localDateTime -> Arrays.stream(repository.findAll()).noneMatch(appointment -> appointment.getDate().equals(localDateTime))).toList();
   }
 }

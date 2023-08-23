@@ -1,6 +1,8 @@
 package pets.market.service;
 
 import javax.swing.*;
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 public class JOptionPaneWrapperImpl implements JOptionPaneWrapper {
@@ -40,8 +42,8 @@ public class JOptionPaneWrapperImpl implements JOptionPaneWrapper {
   }
 
   @Override
-  public <T> T doRequestComboBoxSelection(String message, String title, T[] options) {
-    JComboBox<T> comboBox = new JComboBox<>(options);
+  public LocalDateTime doRequestComboBoxSelectionWithDate(String message, String title, List<LocalDateTime> options) {
+    JComboBox<LocalDateTime> comboBox = new JComboBox<>(options.toArray(new LocalDateTime[0]));
     int result = JOptionPane.showConfirmDialog(
         null,
         comboBox,
@@ -49,7 +51,7 @@ public class JOptionPaneWrapperImpl implements JOptionPaneWrapper {
         JOptionPane.OK_CANCEL_OPTION,
         JOptionPane.PLAIN_MESSAGE);
     if (result == JOptionPane.OK_OPTION) {
-      return (T) comboBox.getSelectedItem();
+      return (LocalDateTime) comboBox.getSelectedItem();
     } else {
       return null;
     }

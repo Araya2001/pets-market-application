@@ -1,5 +1,8 @@
 package pets.market.service;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 public interface JOptionPaneWrapper {
   String doRequestInputData(String message);
 
@@ -11,5 +14,5 @@ public interface JOptionPaneWrapper {
 
   Integer doShowInputMenu(String body, String title, String[] botones, int index);
 
-  <T> T doRequestComboBoxSelection(String message, String title, T[] options);
+  LocalDateTime doRequestComboBoxSelectionWithDate(String message, String title, List<LocalDateTime> options);
 }
