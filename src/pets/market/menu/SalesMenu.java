@@ -51,8 +51,7 @@ public class SalesMenu {
         case 3 -> createInvoice();
         case 4 -> showAll();
         case 5 -> query();
-        case 6 -> {
-        }
+        case 6 -> isRunning = false;
       }
     }
   }
