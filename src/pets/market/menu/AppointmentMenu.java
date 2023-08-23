@@ -5,6 +5,7 @@
 package pets.market.menu;
 
 import pets.market.domain.Appointment;
+import pets.market.domain.Customer;
 import pets.market.repository.BaseDomainRepository;
 import pets.market.service.JOptionPaneWrapper;
 
@@ -13,11 +14,13 @@ import pets.market.service.JOptionPaneWrapper;
  */
 public class AppointmentMenu {
   private final BaseDomainRepository<Appointment, Long> repository;
+  private final BaseDomainRepository<Customer, String> customerRepository;
   private final JOptionPaneWrapper gui;
 
-  public AppointmentMenu(BaseDomainRepository<Appointment, Long> repository, JOptionPaneWrapper gui) {
+  public AppointmentMenu(BaseDomainRepository<Appointment, Long> repository, JOptionPaneWrapper gui, pets.market.repository.BaseDomainRepository<pets.market.domain.Customer,java.lang.String> customerRepository) {
     this.repository = repository;
     this.gui = gui;
+      this.customerRepository = customerRepository;
   }
 
   public void showAll() {
