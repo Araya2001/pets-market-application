@@ -50,11 +50,11 @@ public class PetsMarketApplication {
     inventoryItem3.setPetType("GATO").setItemType("MEDICAMENTOS").setQuantity(10).setPriceValue(9000.00).setName("AMOXICILINA").setId("003-MED-AMOXICILINA");
     inventoryItem4.setPetType("PERRO").setItemType("MEDICAMENTOS").setQuantity(10).setPriceValue(20000.00).setName("DERAMAX").setId("004-MED-DERAMAX");
     inventoryItem5.setPetType("PERRO").setItemType("MEDICAMENTOS").setQuantity(10).setPriceValue(15000.00).setName("RIMADYL").setId("005-MED-RIMADYL");
-    inventoryItem6.setPetType("PERRO").setItemType("GROOMING").setPriceValue(2.0000).setQuantity(10).setId("001-GRO-FullXL");
-    inventoryItem7.setPetType("GATO").setItemType("GROOMING").setPriceValue(5.0000).setQuantity(10).setId("002-GRO-MEDXL");
-    inventoryItem8.setPetType("PERRO").setItemType("GROOMING").setPriceValue(10.0000).setQuantity(10).setId("003-GRO-FULLS");
-    inventoryItem9.setPetType("GATO").setItemType("GROOMING").setPriceValue(11.0000).setQuantity(10).setId("004-GRO-MEDS");
-    inventoryItem10.setPetType("GATO").setItemType("GROOMING").setPriceValue(3.0000).setQuantity(10).setId("005-GRO-BASIC");
+    inventoryItem6.setPetType("PERRO").setItemType("GROOMING").setPriceValue(20.000).setQuantity(10).setName("Dientes + Corte + Baño + Keratina").setId("001-GRO-FullXL");
+    inventoryItem7.setPetType("GATO").setItemType("GROOMING").setPriceValue(15.000).setQuantity(10).setName("Dientes + Corte + Baño").setId("002-GRO-MEDXL");
+    inventoryItem8.setPetType("GATO").setItemType("GROOMING").setPriceValue(10.0000).setQuantity(10).setName("Dientes + Corte + Baño+ Keratina").setId("003-GRO-FULLS");
+    inventoryItem9.setPetType("GATO").setItemType("GROOMING").setPriceValue(11.0000).setQuantity(10).setName("Dientes + Corte + Baño ").setId("004-GRO-MEDS");
+    inventoryItem10.setPetType("PERRO").setItemType("GROOMING").setPriceValue(8.0000).setQuantity(10).setName("Dientes + Corte + Baño ").setId("005-GRO-BASIC");
     inventoryRepository.save(inventoryItem1);
     inventoryRepository.save(inventoryItem2);
     inventoryRepository.save(inventoryItem3);
