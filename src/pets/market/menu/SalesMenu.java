@@ -21,6 +21,11 @@ public class SalesMenu {
     this.gui = gui;
   }
 
+  public void drawSalesMenu(){
+    String[] buttons = {"Clientes", "Carro de compras", "Citas grooming", "Generar factura", "Ver facturas","Salir"};
+  }
+
+
   public void showAll() {
     StringBuffer sb = new StringBuffer();
     try {
