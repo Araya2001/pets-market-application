@@ -44,9 +44,9 @@ public class AppointmentMenu {
             .setCustomerId(customerId)
             .setId(gui.doRequestInputData("Ingresar un identificador de reserva"));
         if (repository.save(appointment) != null) {
-          gui.doShowOutputData("Usuario guardado con éxito");
+          gui.doShowOutputData("Reservación guardada con éxito");
         } else {
-          gui.doShowErrorData("Usuario no pudo ser guardado!!!");
+          gui.doShowErrorData("Reservación no pudo ser guardada!!!");
         }
       }
     } catch (Exception e) {
