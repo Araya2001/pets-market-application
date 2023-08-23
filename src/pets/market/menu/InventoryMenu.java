@@ -75,10 +75,11 @@ public class InventoryMenu {
 
   public void showWithTypeFilter() {
     StringBuffer sb = new StringBuffer();
+    String filter = gui.doRequestInputData("Ingrese el Tipo (MEDICAMENTO, GROOMING, ALIMENTOS, ARTÍCULOS)");
     try {
       for (int i = 0; i < repository.findAll().length; i++) {
         if (repository.findAll()[i] != null) {
-          if (repository.findAll()[i].getItemType().equals(gui.doRequestInputData("Ingrese el Tipo (MEDICAMENTO, GROOMING, ALIMENTOS, ARTÍCULOS)"))) {
+          if (repository.findAll()[i].getItemType().equals(filter)) {
             sb.append(i + 1).append(". ").append(repository.findAll()[i]).append("\n");
           }
         }
@@ -92,7 +93,8 @@ public class InventoryMenu {
   public void query() {
     StringBuffer sb = new StringBuffer();
     try {
-      Arrays.stream(repository.findByPredicate(inventoryItem -> inventoryItem.getId().equals(gui.doRequestInputData("Ingrese el código del producto a consultar:")))).findFirst().ifPresent(sb::append);
+      String product = gui.doRequestInputData("Ingrese el código del producto a consultar:");
+      Arrays.stream(repository.findByPredicate(inventoryItem -> inventoryItem.getId().equals(product))).findFirst().ifPresent(sb::append);
       gui.doShowOutputData(sb.toString());
     } catch (Exception e) {
       gui.doShowErrorData(e.getMessage());
