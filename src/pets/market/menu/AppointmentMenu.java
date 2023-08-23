@@ -9,18 +9,77 @@ import pets.market.domain.Customer;
 import pets.market.repository.BaseDomainRepository;
 import pets.market.service.JOptionPaneWrapper;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
+
 /**
  * @author Valeria
  */
 public class AppointmentMenu {
-  private final BaseDomainRepository<Appointment, Long> repository;
+  private final BaseDomainRepository<Appointment, String> repository;
   private final BaseDomainRepository<Customer, String> customerRepository;
   private final JOptionPaneWrapper gui;
 
-  public AppointmentMenu(BaseDomainRepository<Appointment, Long> repository, JOptionPaneWrapper gui, BaseDomainRepository<Customer, String> customerRepository) {
+  public AppointmentMenu(BaseDomainRepository<Appointment, String> repository, JOptionPaneWrapper gui, BaseDomainRepository<Customer, String> customerRepository) {
     this.repository = repository;
     this.gui = gui;
     this.customerRepository = customerRepository;
+  }
+
+  public void createAppointmentReservation() {
+    Appointment appointment;
+    try {
+      String customerId = gui.doRequestInputData("Ingresar cédula del cliente:");
+      if (customerRepository.findById(customerId).isEmpty()) {
+        gui.doShowErrorData("Por favor crear el cliente primero");
+      } else {
+        // TODO VVM: METER INTERFAZ DE CALENDARIO
+        appointment = new Appointment();
+        appointment.setDate(LocalDateTime.from(Instant.now()))
+            .setCustomerId(customerId)
+            .setId(gui.doRequestInputData("Ingresar un identificador de reserva"));
+        if (repository.save(appointment) != null) {
+          gui.doShowOutputData("Usuario guardado con éxito");
+        } else {
+          gui.doShowErrorData("Usuario no pudo ser guardado!!!");
+        }
+      }
+    } catch (Exception e) {
+      gui.doShowErrorData(e.getMessage());
+    }
+  }
+
+  public void modifyAppointmentReservation() {
+    Appointment appointment;
+    try {
+      String customerId = gui.doRequestInputData("Ingresar cédula del cliente:");
+      if (customerRepository.findById(customerId).isEmpty()) {
+        gui.doShowErrorData("Por favor crear el cliente primero");
+      } else {
+        appointment = repository.findById(gui.doRequestInputData("Ingrese identificador de reserva:")).orElse(null);
+        if (appointment != null) {
+          // TODO VVM: METER INTERFAZ DE CALENDARIO
+          appointment.setDate(LocalDateTime.from(Instant.now())).setCustomerId(customerId).setId(gui.doRequestInputData("Ingresar un identificador de reserva"));
+        } else {
+          gui.doShowErrorData("No se logró actualizar la reservación!!!");
+        }
+      }
+    } catch (Exception e) {
+      gui.doShowErrorData(e.getMessage());
+    }
+  }
+
+  public void deleteAppointmentReservation() {
+    try {
+      Appointment appointment = repository.findById(gui.doRequestInputData("Ingrese identificador de reserva:")).orElse(null);
+      if (repository.delete(appointment)) {
+        gui.doShowOutputData("Se logró eliminar la reserva");
+      } else {
+        gui.doShowOutputData("No se logró eliminar la reserva");
+      }
+    } catch (Exception e) {
+      gui.doShowErrorData(e.getMessage());
+    }
   }
 
   public void showAll() {

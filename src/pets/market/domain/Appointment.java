@@ -10,7 +10,7 @@ import java.util.Objects;
 /**
  * @author Valeria
  */
-public class Appointment extends BaseEntity<Long> {
+public class Appointment extends BaseEntity<String> {
   private LocalDateTime date;
   private String customerId;
 
