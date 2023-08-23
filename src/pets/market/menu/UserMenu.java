@@ -23,9 +23,9 @@ public class UserMenu {
     User user = new User();
     String[] typeButton = {"Administrador", "Cajero"};
     try {
-      user.setFirstName("Ingrese el nombre del usuario:")
-          .setLastName("Ingrese el apellido del usuario")
-          .setPassword("Ingrese la contraseña que desea asignarle a este usuario")
+      user.setFirstName(gui.doRequestInputData("Ingrese el nombre del usuario:"))
+          .setLastName(gui.doRequestInputData("Ingrese el apellido del usuario"))
+          .setPassword(gui.doRequestInputData("Ingrese la contraseña que desea asignarle a este usuario"))
           .setRoleType(RoleType.findByPredicate(roleType -> roleType.getType().equals(gui.doShowInputMenu("Seleccione el tipo de usuario:", "USUARIO", typeButton, 0))).orElse(RoleType.SELLER))
           .setId(gui.doRequestInputData("Ingrese la cédula del usuario:"));
       if (repository.save(user) != null) {
@@ -43,9 +43,9 @@ public class UserMenu {
     try {
       User user = repository.findById(gui.doRequestInputData("Ingrese la cédula del usuario a modificar:")).orElse(null);
       if (user != null) {
-        user.setFirstName("Ingrese el nombre del usuario:")
-            .setLastName("Ingrese el apellido del usuario")
-            .setPassword("Ingrese la contraseña que desea asignarle a este usuario")
+        user.setFirstName(gui.doRequestInputData("Ingrese el nombre del usuario:"))
+            .setLastName(gui.doRequestInputData("Ingrese el apellido del usuario"))
+            .setPassword(gui.doRequestInputData("Ingrese la contraseña que desea asignarle a este usuario"))
             .setRoleType(RoleType.findByPredicate(roleType -> roleType.getType().equals(gui.doShowInputMenu("Seleccione el tipo de usuario:", "USUARIO", typeButton, 0))).orElse(RoleType.SELLER))
             .setId(gui.doRequestInputData("Ingrese la cédula del usuario:"));
       } else {

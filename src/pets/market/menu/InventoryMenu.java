@@ -22,12 +22,65 @@ public class InventoryMenu {
     this.gui = gui;
   }
 
+  public void createItem() {
+    InventoryItem inventoryItem = new InventoryItem();
+    try {
+      inventoryItem.setName(gui.doRequestInputData("Ingrese el nombre del producto:"))
+          .setItemType(gui.doRequestInputData("Ingrese el tipo del producto:"))
+          .setPetType(gui.doRequestInputData("Ingrese el animal al que aplica este producto:"))
+          .setQuantity(Integer.parseInt((gui.doRequestInputData("Ingrese la cantidad de productos disponibles:"))))
+          .setPriceValue(Double.parseDouble((gui.doRequestInputData("Ingrese el precio unitario del producto (0.00):"))))
+          .setId(gui.doRequestInputData("Ingrese la cédula del usuario:"));
+      if (repository.save(inventoryItem) != null) {
+        gui.doShowOutputData("Item guardado con éxito");
+      } else {
+        gui.doShowErrorData("Item no pudo ser guardado!!!");
+      }
+    } catch (Exception e) {
+      gui.doShowErrorData(e.getMessage());
+    }
+  }
+
+  public void modifyItem() {
+    try {
+      InventoryItem item = Arrays.stream(repository.findByPredicate(inventoryItem -> inventoryItem.getId().equals(gui.doRequestInputData("Ingrese el código del producto a consultar:")))).findFirst().orElse(null);
+      if (item != null) {
+        item.setName(gui.doRequestInputData("Ingrese el nombre del producto:"))
+            .setItemType(gui.doRequestInputData("Ingrese el tipo del producto:"))
+            .setPetType(gui.doRequestInputData("Ingrese el animal al que aplica este producto:"))
+            .setQuantity(Integer.parseInt((gui.doRequestInputData("Ingrese la cantidad de productos disponibles:"))))
+            .setPriceValue(Double.parseDouble((gui.doRequestInputData("Ingrese el precio unitario del producto (0.00):"))))
+            .setId(gui.doRequestInputData("Ingrese la cédula del usuario:"));
+      } else {
+        gui.doShowErrorData("No se logró encontrar el producto especificado");
+      }
+    } catch (Exception e) {
+      gui.doShowErrorData(e.getMessage());
+    }
+  }
+
   public void showAll() {
     StringBuffer sb = new StringBuffer();
     try {
       for (int i = 0; i < repository.findAll().length; i++) {
         if (repository.findAll()[i] != null) {
           sb.append(i + 1).append(". ").append(repository.findAll()[i]);
+        }
+      }
+      gui.doShowOutputData(sb.toString());
+    } catch (Exception e) {
+      gui.doShowErrorData(e.getMessage());
+    }
+  }
+
+  public void showWithTypeFilter(String typeFilter) {
+    StringBuffer sb = new StringBuffer();
+    try {
+      for (int i = 0; i < repository.findAll().length; i++) {
+        if (repository.findAll()[i] != null) {
+          if (repository.findAll()[i].getItemType().equals(typeFilter)) {
+            sb.append(i + 1).append(". ").append(repository.findAll()[i]);
+          }
         }
       }
       gui.doShowOutputData(sb.toString());
