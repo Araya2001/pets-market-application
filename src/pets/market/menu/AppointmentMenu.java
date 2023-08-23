@@ -11,6 +11,7 @@ import pets.market.service.JOptionPaneWrapper;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
+import java.util.stream.Stream;
 
 /**
  * @author Valeria
@@ -105,5 +106,9 @@ public class AppointmentMenu {
     } catch (Exception e) {
       gui.doShowErrorData(e.getMessage());
     }
+  }
+
+  private LocalDateTime[] localDateTimes() {
+    return (LocalDateTime[]) Stream.iterate(0, x -> x + 1).limit(30).map(x -> LocalDateTime.now().plusDays(x)).toArray();
   }
 }
