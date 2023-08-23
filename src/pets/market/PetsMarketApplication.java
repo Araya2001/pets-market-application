@@ -38,7 +38,23 @@ public class PetsMarketApplication {
     InventoryItem inventoryItem1 = new InventoryItem();
     inventoryItem1.setPetType("PERRO").setItemType("MEDICINA");
     inventoryRepository.save(inventoryItem1);
-
+    
+     InventoryItem inventoryItem6 = new InventoryItem();
+     InventoryItem inventoryItem7 = new InventoryItem();
+     InventoryItem inventoryItem8 = new InventoryItem();
+     InventoryItem inventoryItem9 = new InventoryItem();
+     InventoryItem inventoryItem10 = new InventoryItem();
+    inventoryItem6.setPetType("PERRO").setItemType("GROOMING").setPriceValue(2.0000).setQuantity(10).setId("001-GRO-FullXL");
+    inventoryItem7.setPetType("GATO").setItemType("GROOMING").setPriceValue(5.0000).setQuantity(10).setId("002-GRO-MEDXL");
+    inventoryItem8.setPetType("PERRO").setItemType("GROOMING").setPriceValue(10.0000).setQuantity(10).setId("003-GRO-FULLS");
+    inventoryItem9.setPetType("GATO").setItemType("GROOMING").setPriceValue(11.0000).setQuantity(10).setId("004-GRO-MEDS");
+    inventoryItem10.setPetType("GATO").setItemType("GROOMING").setPriceValue(3.0000).setQuantity(10).setId("005-GRO-BASIC");
+    inventoryRepository.save(inventoryItem6);
+    inventoryRepository.save(inventoryItem7);
+    inventoryRepository.save(inventoryItem8);
+    inventoryRepository.save(inventoryItem9);
+    inventoryRepository.save(inventoryItem10);
+    
     while (gui.doRequestYesNoMenu("Desea ingresar a la aplicación?")) {
       User user = loginMenu.doLogin();
       if (user != null) {
