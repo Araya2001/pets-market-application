@@ -7,33 +7,35 @@ package pets.market.domain;
 import java.util.Objects;
 
 public class Customer extends BaseEntity<String> {
-  public String fullName;
-  public String email;
+  private String fullName;
+  private String email;
+  private String phoneNumber;
 
-  // Constructor
-  public Customer(String fullName, String email, String id) {
-    this.fullName = fullName;
-    this.email = email;
-  }
-
-  // Método "get" para fullName
   public String getFullName() {
     return fullName;
   }
 
-  // Método "set" para fullName
-  public void setFullName(String fullName) {
-    this.fullName = fullName;
+  public String getPhoneNumber() {
+    return phoneNumber;
   }
 
-  // Método "get" para email
+  public Customer setPhoneNumber(String phoneNumber) {
+    this.phoneNumber = phoneNumber;
+    return this;
+  }
+
+  public Customer setFullName(String fullName) {
+    this.fullName = fullName;
+    return this;
+  }
+
   public String getEmail() {
     return email;
   }
 
-  // Método "set" para email
-  public void setEmail(String email) {
+  public Customer setEmail(String email) {
     this.email = email;
+    return this;
   }
 
   @Override
@@ -45,20 +47,22 @@ public class Customer extends BaseEntity<String> {
       return false;
     }
     Customer customer = (Customer) o;
-    return Objects.equals(fullName, customer.fullName) && Objects.equals(email, customer.email);
+    return Objects.equals(fullName, customer.fullName) && Objects.equals(email, customer.email) && Objects.equals(phoneNumber, customer.phoneNumber);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(fullName, email);
+    return Objects.hash(fullName, email, phoneNumber);
   }
 
   @Override
   public String toString() {
-    String sb = "Customer{" + "fullName='" + fullName + '\'' +
-        ", email='" + email + '\'' +
-        '}';
-    return sb;
+    final StringBuffer sb = new StringBuffer("Customer{");
+    sb.append("fullName='").append(fullName).append('\'');
+    sb.append(", email='").append(email).append('\'');
+    sb.append(", phoneNumber='").append(phoneNumber).append('\'');
+    sb.append('}');
+    return sb.toString();
   }
 }
 

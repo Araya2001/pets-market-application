@@ -10,6 +10,8 @@ package pets.market.menu;
  */
 
 import pets.market.domain.Customer;
+import pets.market.domain.User;
+import pets.market.dto.RoleType;
 import pets.market.repository.BaseDomainRepository;
 import pets.market.service.JOptionPaneWrapper;
 
@@ -21,6 +23,40 @@ public class CustomerMenu {
     public CustomerMenu(BaseDomainRepository<Customer, String> repository, JOptionPaneWrapper gui) {
         this.repository = repository;
         this.gui = gui;
+    }
+
+    public void createCustomer() {
+        Customer customer = new Customer();
+        try {
+            customer.setFullName(gui.doRequestInputData("Ingrese el nombre completo del cliente"))
+                    .setEmail(gui.doRequestInputData("Ingrese el correo del cliente"))
+                    .setPhoneNumber(gui.doRequestInputData("Ingrese el número de teléfono del cliente"))
+                    .setId(gui.doRequestInputData("Ingrese la cédula del cliente:"));
+            if (repository.save(customer) != null) {
+                gui.doShowOutputData("Cliente guardado con éxito");
+            } else {
+                gui.doShowErrorData("Cliente no pudo ser guardado!!!");
+            }
+        } catch (Exception e) {
+            gui.doShowErrorData(e.getMessage());
+        }
+    }
+
+    public void modifyCustomer() {
+
+        try {
+            Customer customer = repository.findById(gui.doRequestInputData("Ingrese la cédula del usuario a modificar:")).orElse(null);
+            if (customer != null) {
+                customer.setFullName(gui.doRequestInputData("Ingrese el nombre completo del cliente"))
+                        .setEmail(gui.doRequestInputData("Ingrese el correo del cliente"))
+                        .setPhoneNumber(gui.doRequestInputData("Ingrese el número de teléfono del cliente"))
+                        .setId(gui.doRequestInputData("Ingrese la cédula del cliente:"));
+            } else {
+                gui.doShowErrorData("No se logró encontrar el usuario especificado");
+            }
+        } catch (Exception e) {
+            gui.doShowErrorData(e.getMessage());
+        }
     }
 
     public void showAll() {
