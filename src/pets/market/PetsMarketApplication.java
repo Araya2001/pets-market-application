@@ -33,8 +33,11 @@ public class PetsMarketApplication {
     User root = new User().setFirstName("root").setFirstName("Admin").setLastName("Root").setRoleType(RoleType.MANAGER).setPassword("Clave1234");
     root.setId("1");
     userRepository.save(root);
+
     // BLOQUE PRODUCTOS
     InventoryItem inventoryItem1 = new InventoryItem();
+    inventoryItem1.setPetType("PERRO").setItemType("MEDICINA");
+    inventoryRepository.save(inventoryItem1);
 
     while (gui.doRequestYesNoMenu("Desea ingresar a la aplicación?")) {
       User user = loginMenu.doLogin();
