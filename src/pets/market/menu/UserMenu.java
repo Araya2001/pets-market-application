@@ -25,8 +25,9 @@ public class UserMenu {
     try {
       user.setFirstName(gui.doRequestInputData("Ingrese el nombre del usuario:"))
           .setLastName(gui.doRequestInputData("Ingrese el apellido del usuario"))
-          .setPassword(gui.doRequestInputData("Ingrese la contraseña que desea asignarle a este usuario"))
-          .setRoleType(RoleType.findByPredicate(roleType -> roleType.getType().equals(gui.doShowInputMenu("Seleccione el tipo de usuario:", "USUARIO", typeButton, 0))).orElse(RoleType.SELLER))
+          .setPassword(gui.doRequestInputData("Ingrese la contraseña que desea asignarle a este usuario"));
+      Integer filter = gui.doShowInputMenu("Seleccione el tipo de usuario:", "USUARIO", typeButton, 0);
+      user.setRoleType(RoleType.findByPredicate(roleType -> roleType.getType().equals(filter)).orElse(RoleType.SELLER))
           .setId(gui.doRequestInputData("Ingrese la cédula del usuario:"));
       if (repository.save(user) != null) {
         gui.doShowOutputData("Usuario guardado con éxito");
@@ -45,8 +46,9 @@ public class UserMenu {
       if (user != null) {
         user.setFirstName(gui.doRequestInputData("Ingrese el nombre del usuario:"))
             .setLastName(gui.doRequestInputData("Ingrese el apellido del usuario"))
-            .setPassword(gui.doRequestInputData("Ingrese la contraseña que desea asignarle a este usuario"))
-            .setRoleType(RoleType.findByPredicate(roleType -> roleType.getType().equals(gui.doShowInputMenu("Seleccione el tipo de usuario:", "USUARIO", typeButton, 0))).orElse(RoleType.SELLER))
+            .setPassword(gui.doRequestInputData("Ingrese la contraseña que desea asignarle a este usuario"));
+        Integer filter = gui.doShowInputMenu("Seleccione el tipo de usuario:", "USUARIO", typeButton, 0);
+        user.setRoleType(RoleType.findByPredicate(roleType -> roleType.getType().equals(filter)).orElse(RoleType.SELLER))
             .setId(gui.doRequestInputData("Ingrese la cédula del usuario:"));
       } else {
         gui.doShowErrorData("No se logró encontrar el usuario especificado");

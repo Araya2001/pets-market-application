@@ -12,8 +12,8 @@ import java.util.function.Predicate;
  * @author diana
  */
 public enum RoleType {
-  SELLER(0),
-  MANAGER(1);
+  SELLER(1),
+  MANAGER(0);
   private final Integer type;
 
   RoleType(Integer type) {
