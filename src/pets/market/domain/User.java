@@ -69,12 +69,14 @@ public class User extends BaseEntity<String> {
 
   @Override
   public String toString() {
-    String sb = "User{" + "firstName='" + firstName + '\'' +
-        ", lastName='" + lastName + '\'' +
-        ", password='" + password + '\'' +
-        ", roleType=" + roleType +
-        '}';
-    return sb;
+    final StringBuffer sb = new StringBuffer("User{");
+    sb.append("firstName='").append(firstName).append('\'');
+    sb.append(", lastName='").append(lastName).append('\'');
+    sb.append(", password='").append(password).append('\'');
+    sb.append(", roleType=").append(roleType);
+    sb.append(", id=").append(id);
+    sb.append('}');
+    return sb.toString();
   }
 }
 

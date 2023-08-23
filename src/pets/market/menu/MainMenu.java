@@ -73,7 +73,7 @@ public class MainMenu {
   }
 
   private void drawInventoryMenu() {
-    String[] buttons = {"Crear Item", "Modificar Item", "[","Salir"};
+    String[] buttons = {"Crear Item", "Modificar Item", "Ver Items", "Consultar Item", "Filtrar Item por Tipo", "Salir"};
     int selection = 0;
     boolean isRunning = true;
     while (isRunning) {
@@ -81,7 +81,10 @@ public class MainMenu {
       switch (selection) {
         case 0 -> inventoryMenu.createItem();
         case 1 -> inventoryMenu.modifyItem();
-        case 2 -> isRunning = false;
+        case 2 -> inventoryMenu.showAll();
+        case 3 -> inventoryMenu.query();
+        case 4 -> inventoryMenu.showWithTypeFilter();
+        case 5 -> isRunning = false;
       }
     }
   }

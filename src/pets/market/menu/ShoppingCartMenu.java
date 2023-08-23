@@ -120,7 +120,7 @@ public class ShoppingCartMenu {
     try {
       for (int i = 0; i < repository.findAll().length; i++) {
         if (repository.findAll()[i] != null) {
-          sb.append(i + 1).append(". ").append(repository.findAll()[i]);
+          sb.append(i + 1).append(". ").append(repository.findAll()[i]).append("\n");
         }
       }
       gui.doShowOutputData(sb.toString());

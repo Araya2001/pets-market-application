@@ -69,11 +69,11 @@ public class PetsMarketApplication {
     inventoryItem13.setPetType("GATO").setItemType("ALIMENTOS").setQuantity(10).setPriceValue(1000.00).setName("HELADO").setId("003-ALI-HELADO");
     inventoryItem14.setPetType("PERRO").setItemType("ALIMENTOS").setQuantity(10).setPriceValue(10000.00).setName("ALIMENTO CACHORRO").setId("004-ALI-CACHORRO");
     inventoryItem15.setPetType("PERRO").setItemType("ALIMENTOS").setQuantity(10).setPriceValue(4000.00).setName("SNACK").setId("005-ALI-SNACK");
-    inventoryItem11.setPetType("GATO").setItemType("ARTICULOS").setQuantity(10).setPriceValue(3000.00).setName("COLLAR").setId("001-ART-COLLAR");
-    inventoryItem12.setPetType("PERRO").setItemType("ARTICULOS").setQuantity(10).setPriceValue(4000.00).setName("RATON").setId("002-ART-RATON");
-    inventoryItem13.setPetType("GATO").setItemType("ARTICULOS").setQuantity(10).setPriceValue(2000.00).setName("HUESO PERRO").setId("003-ART-HUESO");
-    inventoryItem14.setPetType("PERRO").setItemType("ARTICULOS").setQuantity(10).setPriceValue(10000.00).setName("HARNES").setId("004-ART-HARNES");
-    inventoryItem15.setPetType("PERRO").setItemType("ARTICULOS").setQuantity(10).setPriceValue(5000.00).setName("PELOTA").setId("005-ART-PELOTA");
+    inventoryItem16.setPetType("GATO").setItemType("ARTÍCULOS").setQuantity(10).setPriceValue(3000.00).setName("COLLAR").setId("001-ART-COLLAR");
+    inventoryItem17.setPetType("PERRO").setItemType("ARTÍCULOS").setQuantity(10).setPriceValue(4000.00).setName("RATON").setId("002-ART-RATON");
+    inventoryItem18.setPetType("GATO").setItemType("ARTÍCULOS").setQuantity(10).setPriceValue(2000.00).setName("HUESO PERRO").setId("003-ART-HUESO");
+    inventoryItem19.setPetType("PERRO").setItemType("ARTÍCULOS").setQuantity(10).setPriceValue(10000.00).setName("HARNES").setId("004-ART-HARNES");
+    inventoryItem20.setPetType("PERRO").setItemType("ARTÍCULOS").setQuantity(10).setPriceValue(5000.00).setName("PELOTA").setId("005-ART-PELOTA");
     inventoryRepository.save(inventoryItem1);
     inventoryRepository.save(inventoryItem2);
     inventoryRepository.save(inventoryItem3);

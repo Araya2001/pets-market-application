@@ -51,9 +51,11 @@ public class Appointment extends BaseEntity<String> {
 
   @Override
   public String toString() {
-    String sb = "Appointment{" + "date=" + date +
-        ", customerId='" + customerId + '\'' +
-        '}';
-    return sb;
+    final StringBuffer sb = new StringBuffer("Appointment{");
+    sb.append("date=").append(date);
+    sb.append(", customerId='").append(customerId).append('\'');
+    sb.append(", id=").append(id);
+    sb.append('}');
+    return sb.toString();
   }
 }

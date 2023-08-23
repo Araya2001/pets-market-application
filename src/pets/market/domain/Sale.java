@@ -84,13 +84,15 @@ public class Sale extends BaseEntity<Long> {
 
   @Override
   public String toString() {
-    String sb = "Sale{" + "saleByUser=" + saleByUser +
-        ", customer=" + customer +
-        ", inventoryItems=" + inventoryItems +
-        ", taxType=" + taxType +
-        ", subTotalChargeValue=" + subTotalChargeValue +
-        ", totalChargeValue=" + totalChargeValue +
-        '}';
-    return sb;
+    final StringBuffer sb = new StringBuffer("Sale{");
+    sb.append("saleByUser='").append(saleByUser).append('\'');
+    sb.append(", customer='").append(customer).append('\'');
+    sb.append(", inventoryItems=").append(inventoryItems);
+    sb.append(", taxType='").append(taxType).append('\'');
+    sb.append(", subTotalChargeValue=").append(subTotalChargeValue);
+    sb.append(", totalChargeValue=").append(totalChargeValue);
+    sb.append(", id=").append(id);
+    sb.append('}');
+    return sb.toString();
   }
 }

@@ -1,7 +1,7 @@
 package pets.market.domain;
 
 public abstract class BaseEntity<S> {
-  private S id;
+  protected S id;
 
   public S getId() {
     return id;

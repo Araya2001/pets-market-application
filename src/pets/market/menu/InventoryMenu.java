@@ -64,7 +64,7 @@ public class InventoryMenu {
     try {
       for (int i = 0; i < repository.findAll().length; i++) {
         if (repository.findAll()[i] != null) {
-          sb.append(i + 1).append(". ").append(repository.findAll()[i]);
+          sb.append(i + 1).append(". ").append(repository.findAll()[i]).append("\n");
         }
       }
       gui.doShowOutputData(sb.toString());
@@ -73,13 +73,13 @@ public class InventoryMenu {
     }
   }
 
-  public void showWithTypeFilter(String typeFilter) {
+  public void showWithTypeFilter() {
     StringBuffer sb = new StringBuffer();
     try {
       for (int i = 0; i < repository.findAll().length; i++) {
         if (repository.findAll()[i] != null) {
-          if (repository.findAll()[i].getItemType().equals(typeFilter)) {
-            sb.append(i + 1).append(". ").append(repository.findAll()[i]);
+          if (repository.findAll()[i].getItemType().equals(gui.doRequestInputData("Ingrese el Tipo (MEDICAMENTO, GROOMING, ALIMENTOS, ARTÍCULOS)"))) {
+            sb.append(i + 1).append(". ").append(repository.findAll()[i]).append("\n");
           }
         }
       }
