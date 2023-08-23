@@ -10,4 +10,6 @@ public interface JOptionPaneWrapper {
   Boolean doRequestYesNoMenu(String message);
 
   Integer doShowInputMenu(String body, String title, String[] botones, int index);
+
+  <T> T doRequestComboBoxSelection(String message, String title, T[] options);
 }
