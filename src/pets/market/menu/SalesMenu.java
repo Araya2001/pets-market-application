@@ -48,7 +48,11 @@ public class SalesMenu {
         case 0 -> drawCustomerMenu();
         case 1 -> drawShoppingCartMenu();
         case 2 -> drawAppointmentMenu();
-        case 3 -> isRunning = false;
+        case 3 -> createInvoice();
+        case 4 -> showAll();
+        case 5 -> query();
+        case 6 -> {
+        }
       }
     }
   }
@@ -160,8 +164,8 @@ public class SalesMenu {
   public void query() {
     StringBuffer sb = new StringBuffer();
     try {
-      Sale sale = repository.findAll()[Integer.parseInt(gui.doRequestInputData("Ingrese el índice mostrado por sistema:"))];
-      sb.append(sale);
+      Arrays.stream(repository.findAll()).filter(sale1 -> sale1.getCustomer().equals(gui.doRequestInputData("Ingrese la cédula del cliente")))
+          .forEach(sb::append);
       gui.doShowOutputData(sb.toString());
     } catch (Exception e) {
       gui.doShowErrorData(e.getMessage());
