@@ -38,4 +38,19 @@ public class JOptionPaneWrapperImpl implements JOptionPaneWrapper {
             JOptionPane.QUESTION_MESSAGE,
             null, botones, botones[index]);
   }
+    public <T> T doRequestComboBoxSelection(String message, String title, T[] options) {
+        JComboBox<T> comboBox = new JComboBox<>(options);
+        int result = JOptionPane.showConfirmDialog(
+                null,
+                comboBox,
+                message,
+                JOptionPane.OK_CANCEL_OPTION,
+                JOptionPane.PLAIN_MESSAGE);
+
+        if (result == JOptionPane.OK_OPTION) {
+            return (T) comboBox.getSelectedItem();
+        } else {
+            return null;
+        }
+    }
 }
