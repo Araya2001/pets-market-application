@@ -120,7 +120,7 @@ public class ShoppingCartMenu {
     try {
       for (int i = 0; i < repository.findAll().length; i++) {
         if (repository.findAll()[i] != null) {
-          sb.append(i + 1).append(". ").append(repository.findAll()[i]);
+          sb.append(i + 1).append(". ").append(repository.findAll()[i]).append("\n");
         }
       }
       gui.doShowOutputData(sb.toString());
@@ -132,14 +132,14 @@ public class ShoppingCartMenu {
   public void query() {
     StringBuffer sb = new StringBuffer();
     try {
-      ShoppingCart shoppingCart = Arrays.stream(repository.findByPredicate(shoppingCart1 -> shoppingCart1.getCustomer().equals(gui.doRequestInputData("Ingrese la cédula del cliente:")))).findFirst().orElse(null);
+      String filter = gui.doRequestInputData("Ingrese la cédula del cliente:");
+      ShoppingCart shoppingCart = Arrays.stream(repository.findByPredicate(shoppingCart1 -> shoppingCart1.getCustomer().equals(filter))).findFirst().orElse(null);
       if (shoppingCart != null) {
         sb.append(shoppingCart);
         gui.doShowOutputData(sb.toString());
-      }else{
+      } else {
         gui.doShowErrorData("No hay carrito asociado a dicho cliente, por favor agregar items!!!");
       }
-
     } catch (Exception e) {
       gui.doShowErrorData(e.getMessage());
     }

@@ -61,6 +61,7 @@ public class Customer extends BaseEntity<String> {
     sb.append("fullName='").append(fullName).append('\'');
     sb.append(", email='").append(email).append('\'');
     sb.append(", phoneNumber='").append(phoneNumber).append('\'');
+    sb.append(", id=").append(id);
     sb.append('}');
     return sb.toString();
   }

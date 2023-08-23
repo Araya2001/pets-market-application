@@ -20,7 +20,7 @@ public class MainMenu {
   }
 
   public void drawMainMenu() {
-    if (user.getRoleType().equals(RoleType.MANAGER)){
+    if (user.getRoleType().equals(RoleType.MANAGER)) {
       drawAdminMenu();
     } else {
       drawSellerMenu();
@@ -56,7 +56,7 @@ public class MainMenu {
   }
 
   private void drawUserMenu() {
-    String[] buttons = {"Crear Usuario", "Modificar Usuario", "Eliminar Usuario", "Salir"};
+    String[] buttons = {"Crear Usuario", "Modificar Usuario", "Eliminar Usuario", "Ver Usuarios", "Consultar Usuario", "Salir"};
     int selection = 0;
     boolean isRunning = true;
     while (isRunning) {
@@ -65,13 +65,15 @@ public class MainMenu {
         case 0 -> userMenu.createUser();
         case 1 -> userMenu.modifyUser();
         case 2 -> userMenu.deleteUser();
-        case 3 -> isRunning = false;
+        case 3 -> userMenu.showAll();
+        case 4 -> userMenu.query();
+        case 5 -> isRunning = false;
       }
     }
   }
 
   private void drawInventoryMenu() {
-    String[] buttons = {"Crear Item", "Modificar Item", "Salir"};
+    String[] buttons = {"Crear Item", "Modificar Item", "Ver Items", "Consultar Item", "Filtrar Item por Tipo", "Salir"};
     int selection = 0;
     boolean isRunning = true;
     while (isRunning) {
@@ -79,7 +81,10 @@ public class MainMenu {
       switch (selection) {
         case 0 -> inventoryMenu.createItem();
         case 1 -> inventoryMenu.modifyItem();
-        case 2 -> isRunning = false;
+        case 2 -> inventoryMenu.showAll();
+        case 3 -> inventoryMenu.query();
+        case 4 -> inventoryMenu.showWithTypeFilter();
+        case 5 -> isRunning = false;
       }
     }
   }

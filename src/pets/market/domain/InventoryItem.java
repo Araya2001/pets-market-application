@@ -76,12 +76,14 @@ public class InventoryItem extends BaseEntity<String> {
 
   @Override
   public String toString() {
-    String sb = "InventoryItem{" + "petType=" + petType +
-        ", name='" + name + '\'' +
-        ", priceValue=" + priceValue +
-        ", quantity=" + quantity +
-        ", itemType=" + itemType +
-        '}';
-    return sb;
+    final StringBuffer sb = new StringBuffer("InventoryItem{");
+    sb.append("petType='").append(petType).append('\'');
+    sb.append(", name='").append(name).append('\'');
+    sb.append(", priceValue=").append(priceValue);
+    sb.append(", quantity=").append(quantity);
+    sb.append(", itemType='").append(itemType).append('\'');
+    sb.append(", id=").append(id);
+    sb.append('}');
+    return sb.toString();
   }
 }

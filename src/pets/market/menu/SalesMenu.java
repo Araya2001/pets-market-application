@@ -151,7 +151,7 @@ public class SalesMenu {
     try {
       for (int i = 0; i < repository.findAll().length; i++) {
         if (repository.findAll()[i] != null) {
-          sb.append(i + 1).append(". ").append(repository.findAll()[i]);
+          sb.append(i + 1).append(". ").append(repository.findAll()[i]).append("\n");
         }
       }
       gui.doShowOutputData(sb.toString());
@@ -163,7 +163,8 @@ public class SalesMenu {
   public void query() {
     StringBuffer sb = new StringBuffer();
     try {
-      Arrays.stream(repository.findAll()).filter(sale1 -> sale1.getCustomer().equals(gui.doRequestInputData("Ingrese la cédula del cliente")))
+      String filter = gui.doRequestInputData("Ingrese la cédula del cliente");
+      Arrays.stream(repository.findAll()).filter(sale1 -> sale1.getCustomer().equals(filter))
           .forEach(sb::append);
       gui.doShowOutputData(sb.toString());
     } catch (Exception e) {

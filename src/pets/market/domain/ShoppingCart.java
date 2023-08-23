@@ -44,9 +44,11 @@ public class ShoppingCart extends BaseEntity<Long> {
 
   @Override
   public String toString() {
-    String sb = "ShoppingCart{" + "customer=" + customer +
-        ", inventoryItems=" + inventoryItems +
-        '}';
-    return sb;
+    final StringBuffer sb = new StringBuffer("ShoppingCart{");
+    sb.append("customer='").append(customer).append('\'');
+    sb.append(", inventoryItems=").append(inventoryItems);
+    sb.append(", id=").append(id);
+    sb.append('}');
+    return sb.toString();
   }
 }

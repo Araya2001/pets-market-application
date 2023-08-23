@@ -4,6 +4,7 @@ import pets.market.domain.BaseEntity;
 import pets.market.service.JOptionPaneWrapper;
 import pets.market.service.JOptionPaneWrapperImpl;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -109,10 +110,10 @@ public class GenericDomainRepository<T extends BaseEntity<S>, S> implements Base
   private boolean addWithNewArray(T t) {
     boolean addedWithNewArray = false;
     try {
-      Object[] tempArray = new Object[(tArray.length + 10)];
-        System.arraycopy(tArray, 0, tempArray, 0, tArray.length);
+      T[] tempArray = (T[]) Array.newInstance(t.getClass(), (tArray.length + 10));
+      System.arraycopy(tArray, 0, tempArray, 0, tArray.length);
       tempArray[tArray.length] = t;
-      tArray = (T[]) tempArray;
+      tArray = tempArray;
       addedWithNewArray = true;
     } catch (Exception e) {
       gui.doShowErrorData(e.getMessage());
