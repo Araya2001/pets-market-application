@@ -164,7 +164,7 @@ public class SalesMenu {
     StringBuffer sb = new StringBuffer();
     try {
       String filter = gui.doRequestInputData("Ingrese la cédula del cliente");
-      Arrays.stream(repository.findAll()).filter(sale1 -> sale1.getCustomer().equals(filter))
+      Arrays.stream(repository.findAll()).filter(Objects::nonNull).filter(sale1 -> sale1.getCustomer().equals(filter))
           .forEach(sb::append);
       gui.doShowOutputData(sb.toString());
     } catch (Exception e) {

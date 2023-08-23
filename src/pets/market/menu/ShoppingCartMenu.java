@@ -36,6 +36,7 @@ public class ShoppingCartMenu {
     try {
       String customerId = gui.doRequestInputData("Ingresar cédula del cliente:");
       AtomicBoolean isInvalid = new AtomicBoolean(false);
+      AtomicReference<String> stringAtomicReference = new AtomicReference<>();
       if (customerRepository.findById(customerId).isEmpty()) {
         gui.doShowErrorData("Por favor crear el cliente primero");
       } else {
@@ -54,8 +55,9 @@ public class ShoppingCartMenu {
         }
         AtomicReference<ShoppingCart> cartAR = new AtomicReference<>(cart);
         while (gui.doRequestYesNoMenu("Desea registrar un producto al carrito?")) {
+          stringAtomicReference.set(gui.doRequestInputData("Ingrese el código del producto"));
           Arrays.stream(inventoryItemRepository.findAll())
-              .filter(inventoryItemDTO -> inventoryItemDTO.getId().equals(gui.doRequestInputData("Ingrese el código del producto")))
+              .filter(inventoryItemDTO -> inventoryItemDTO.getId().equals(stringAtomicReference.get()))
               .findFirst()
               .ifPresent(inventoryItemDTO -> cartAR.get().getInventoryItems().put(inventoryItemDTO.getId(), Integer.parseInt(gui.doRequestInputData("Ingrese la cantidad del producto:"))));
         }
