@@ -33,7 +33,6 @@ public class PetsMarketApplication {
     User root = new User().setFirstName("root").setFirstName("Admin").setLastName("Root").setRoleType(RoleType.MANAGER).setPassword("Clave1234");
     root.setId("1");
     userRepository.save(root);
-
     // BLOQUE PRODUCTOS
     InventoryItem inventoryItem1 = new InventoryItem();
     InventoryItem inventoryItem2 = new InventoryItem();
@@ -45,6 +44,16 @@ public class PetsMarketApplication {
     InventoryItem inventoryItem8 = new InventoryItem();
     InventoryItem inventoryItem9 = new InventoryItem();
     InventoryItem inventoryItem10 = new InventoryItem();
+    InventoryItem inventoryItem11 = new InventoryItem();
+    InventoryItem inventoryItem12 = new InventoryItem();
+    InventoryItem inventoryItem13 = new InventoryItem();
+    InventoryItem inventoryItem14 = new InventoryItem();
+    InventoryItem inventoryItem15 = new InventoryItem();
+    InventoryItem inventoryItem16 = new InventoryItem();
+    InventoryItem inventoryItem17 = new InventoryItem();
+    InventoryItem inventoryItem18 = new InventoryItem();
+    InventoryItem inventoryItem19 = new InventoryItem();
+    InventoryItem inventoryItem20 = new InventoryItem();
     inventoryItem1.setPetType("GATO").setItemType("MEDICAMENTOS").setQuantity(10).setPriceValue(10000.00).setName("METACAM").setId("001-MED-METACAM");
     inventoryItem2.setPetType("PERRO").setItemType("MEDICAMENTOS").setQuantity(10).setPriceValue(5000.00).setName("IBUPROFENO").setId("002-MED-IBUPROFENO");
     inventoryItem3.setPetType("GATO").setItemType("MEDICAMENTOS").setQuantity(10).setPriceValue(9000.00).setName("AMOXICILINA").setId("003-MED-AMOXICILINA");
@@ -55,6 +64,16 @@ public class PetsMarketApplication {
     inventoryItem8.setPetType("PERRO").setItemType("GROOMING").setPriceValue(10.0000).setQuantity(10).setId("003-GRO-FULLS");
     inventoryItem9.setPetType("GATO").setItemType("GROOMING").setPriceValue(11.0000).setQuantity(10).setId("004-GRO-MEDS");
     inventoryItem10.setPetType("GATO").setItemType("GROOMING").setPriceValue(3.0000).setQuantity(10).setId("005-GRO-BASIC");
+    inventoryItem11.setPetType("GATO").setItemType("ALIMENTOS").setQuantity(10).setPriceValue(3000.00).setName("ATUN").setId("001-ALI-ATUN");
+    inventoryItem12.setPetType("PERRO").setItemType("ALIMENTOS").setQuantity(10).setPriceValue(5000.00).setName("CROQUETAS").setId("002-ALI-CROQUETAS");
+    inventoryItem13.setPetType("GATO").setItemType("ALIMENTOS").setQuantity(10).setPriceValue(1000.00).setName("HELADO").setId("003-ALI-HELADO");
+    inventoryItem14.setPetType("PERRO").setItemType("ALIMENTOS").setQuantity(10).setPriceValue(10000.00).setName("ALIMENTO CACHORRO").setId("004-ALI-CACHORRO");
+    inventoryItem15.setPetType("PERRO").setItemType("ALIMENTOS").setQuantity(10).setPriceValue(4000.00).setName("SNACK").setId("005-ALI-SNACK");
+    inventoryItem11.setPetType("GATO").setItemType("ARTICULOS").setQuantity(10).setPriceValue(3000.00).setName("COLLAR").setId("001-ART-COLLAR");
+    inventoryItem12.setPetType("PERRO").setItemType("ARTICULOS").setQuantity(10).setPriceValue(4000.00).setName("RATON").setId("002-ART-RATON");
+    inventoryItem13.setPetType("GATO").setItemType("ARTICULOS").setQuantity(10).setPriceValue(2000.00).setName("HUESO PERRO").setId("003-ART-HUESO");
+    inventoryItem14.setPetType("PERRO").setItemType("ARTICULOS").setQuantity(10).setPriceValue(10000.00).setName("HARNES").setId("004-ART-HARNES");
+    inventoryItem15.setPetType("PERRO").setItemType("ARTICULOS").setQuantity(10).setPriceValue(5000.00).setName("PELOTA").setId("005-ART-PELOTA");
     inventoryRepository.save(inventoryItem1);
     inventoryRepository.save(inventoryItem2);
     inventoryRepository.save(inventoryItem3);
@@ -65,7 +84,16 @@ public class PetsMarketApplication {
     inventoryRepository.save(inventoryItem8);
     inventoryRepository.save(inventoryItem9);
     inventoryRepository.save(inventoryItem10);
-
+    inventoryRepository.save(inventoryItem11);
+    inventoryRepository.save(inventoryItem12);
+    inventoryRepository.save(inventoryItem13);
+    inventoryRepository.save(inventoryItem14);
+    inventoryRepository.save(inventoryItem15);
+    inventoryRepository.save(inventoryItem16);
+    inventoryRepository.save(inventoryItem17);
+    inventoryRepository.save(inventoryItem18);
+    inventoryRepository.save(inventoryItem19);
+    inventoryRepository.save(inventoryItem20);
     while (gui.doRequestYesNoMenu("Desea ingresar a la aplicación?")) {
       User user = loginMenu.doLogin();
       if (user != null) {
