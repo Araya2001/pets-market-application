@@ -33,12 +33,22 @@ public class PetsMarketApplication {
     User root = new User().setFirstName("root").setFirstName("Admin").setLastName("Root").setRoleType(RoleType.MANAGER).setPassword("Clave1234");
     root.setId("1");
     userRepository.save(root);
-
     // BLOQUE PRODUCTOS
     InventoryItem inventoryItem1 = new InventoryItem();
-    inventoryItem1.setPetType("PERRO").setItemType("MEDICINA");
+    inventoryItem1.setPetType("GATO").setItemType("MEDICAMENTOS").setQuantity(10).setPriceValue(10000.00).setName("METACAM").setId("001-MED-METACAM");
+    InventoryItem inventoryItem2 = new InventoryItem();
+    inventoryItem2.setPetType("PERRO").setItemType("MEDICAMENTOS").setQuantity(10).setPriceValue(5000.00).setName("IBUPROFENO").setId("002-MED-IBUPROFENO");
+    InventoryItem inventoryItem3 = new InventoryItem();
+    inventoryItem3.setPetType("GATO").setItemType("MEDICAMENTOS").setQuantity(10).setPriceValue(9000.00).setName("AMOXICILINA").setId("003-MED-AMOXICILINA");
+    InventoryItem inventoryItem4 = new InventoryItem();
+    inventoryItem4.setPetType("PERRO").setItemType("MEDICAMENTOS").setQuantity(10).setPriceValue(20000.00).setName("DERAMAX").setId("004-MED-DERAMAX");
+    InventoryItem inventoryItem5 = new InventoryItem();
+    inventoryItem5.setPetType("PERRO").setItemType("MEDICAMENTOS").setQuantity(10).setPriceValue(15000.00).setName("RIMADYL").setId("005-MED-RIMADYL");
     inventoryRepository.save(inventoryItem1);
-
+    inventoryRepository.save(inventoryItem2);
+    inventoryRepository.save(inventoryItem3);
+    inventoryRepository.save(inventoryItem4);
+    inventoryRepository.save(inventoryItem5);
     while (gui.doRequestYesNoMenu("Desea ingresar a la aplicación?")) {
       User user = loginMenu.doLogin();
       if (user != null) {
